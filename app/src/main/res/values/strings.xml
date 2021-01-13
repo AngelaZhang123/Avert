@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Extinguisher</string>
+    <string name="menu_button">Main Menu</string>
+    <string name="checklist_button">Checklist</string>
+    <string name="info_button">Information</string>
+    <string name="level_button">Simulation Levels</string>
+    <string name="profile_button">My profile</string>
 </resources>
