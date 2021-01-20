@@ -47,7 +47,7 @@ public class MenuActivity extends AppCompatActivity {
         mLevelButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuActivity.this, LevelActivity.class);
+                Intent intent = new Intent(MenuActivity.this, SimulationActivity.class);
                 startActivity(intent);
             }
         });
