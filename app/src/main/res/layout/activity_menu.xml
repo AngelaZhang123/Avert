@@ -18,10 +18,10 @@
         android:text="@string/checklist_button" />
 
     <Button
-        android:id="@+id/level_button"
+        android:id="@+id/simulation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/level_button" />
+        android:text="@string/simulation_button" />
 
     <Button
         android:id="@+id/info_button"
