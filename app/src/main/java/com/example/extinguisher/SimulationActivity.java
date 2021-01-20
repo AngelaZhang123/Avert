@@ -14,7 +14,7 @@ public class SimulationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulation);
 
-        mFireButton = (Button) findViewById(R.id.fire_button);
+        mFireButton = (Button) findViewById(R.id.wildfire_button);
         mFireButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -23,7 +23,7 @@ public class SimulationActivity extends AppCompatActivity {
             }
         });
 
-        mQuakeButton = (Button) findViewById(R.id.quake_button);
+        mQuakeButton = (Button) findViewById(R.id.earthquake_button);
         mQuakeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

@@ -6,13 +6,13 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/fire_button"
+        android:id="@+id/wildfire_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/wildfire_button" />
 
     <Button
-        android:id="@+id/quake_button"
+        android:id="@+id/earthquake_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/earthquake_button" />
