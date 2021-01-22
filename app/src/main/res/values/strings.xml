@@ -5,6 +5,10 @@
     <string name="info_button">Information</string>
     <string name="level_button">Simulation Levels</string>
     <string name="profile_button">My profile</string>
+    <string name="simulation_button">Simulations</string>
+    <string name="wildfire_button">Wildfires</string>
+    <string name="earthquake_button">Earthquakes</string>
+    <string name="campfire_button">Campfire</string>
 
     <string name="kit_title">Emergency kit checklist</string>
     <string name="kit_1">Face masks</string>
