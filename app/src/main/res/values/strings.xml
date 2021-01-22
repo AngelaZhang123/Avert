@@ -3,6 +3,9 @@
     <string name="menu_button">Main Menu</string>
     <string name="checklist_button">Checklist</string>
     <string name="info_button">Information</string>
-    <string name="level_button">Simulation Levels</string>
+    <string name="simulation_button">Simulations</string>
     <string name="profile_button">My profile</string>
+    <string name="wildfire_button">Wildfire Simulations</string>
+    <string name="earthquake_button">Earthquake Simulations</string>
+    <string name="campfire_button">Level 1: Campfire Safety</string>
 </resources>
