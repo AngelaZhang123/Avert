@@ -3,20 +3,30 @@
     <string name="menu_button">Main Menu</string>
     <string name="checklist_button">Checklist</string>
     <string name="info_button">Information</string>
-    <string name="level_button">Simulation Levels</string>
-    <string name="profile_button">My profile</string>
     <string name="simulation_button">Simulations</string>
-    <string name="wildfire_button">Wildfires</string>
-    <string name="earthquake_button">Earthquakes</string>
-    <string name="campfire_button">Campfire</string>
+    <string name="profile_button">My profile</string>
+    <string name="wildfire_button">Wildfire Simulations</string>
+    <string name="earthquake_button">Earthquake Simulations</string>
+    <string name="campfire_button">Level 1: Campfire Safety</string>
 
-    <string name="kit_title">Emergency kit checklist</string>
-    <string name="kit_1">Face masks</string>
-    <string name="kit_2">Three days worth of food/water</string>
-    <string name="kit_3">Any medication</string>
-    <string name="kit_4">First aid kit</string>
-    <string name="kit_5">Flashlight</string>
-    <string name="kit_6">Radio and batteries</string>
-    <string name="kit_7">Copy of important documents</string>
-    <string name="kit_8">Cash</string>
+    <string name="campfire1_text">Question one</string>
+    <string name="campfire2_text">Question two</string>
+
+    <string name="campfire1a_button">choice 1a</string>
+    <string name="campfire1b_button">choice 1b</string>
+    <string name="campfire1c_button">choice 1c</string>
+    <string name="campfire2a_button">choice 2a</string>
+    <string name="campfire2b_button">choice 2b</string>
+    <string name="campfire2c_button">choice 2c</string>
+
+    <string name="campfire1a_toast">toast 1a</string>
+    <string name="campfire1b_toast">toast 1b</string>
+    <string name="campfire1c_toast">toast 1c</string>
+    <string name="campfire2a_toast">toast 2a</string>
+    <string name="campfire2b_toast">toast 2b</string>
+    <string name="campfire2c_toast">toast 2c</string>
+
+    <string name="campfireNext_button">next</string>
+    <string name="game_over_text">Game Over!</string>
+    <string name="play_again_button">Play Again</string>
 </resources>
