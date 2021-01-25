@@ -12,7 +12,7 @@ public class CheckListActivity extends AppCompatActivity {
 
     private CheckBox item1, item2, item3, item4, item5, item6, item7, item8;
     private boolean wasChecked1, wasChecked2, wasChecked3, wasChecked4, wasChecked5, wasChecked6, wasChecked7, wasChecked8;
-    private int points;
+    private int points; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
