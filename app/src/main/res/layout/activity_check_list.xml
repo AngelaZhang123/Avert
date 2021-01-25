@@ -6,6 +6,13 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="@string/points" />
+
+    <TextView
         android:id="@+id/kit_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,48 +23,56 @@
         android:id="@+id/kit_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_1"/>
+        android:text="@string/kit_1"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_2"/>
+        android:text="@string/kit_2"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_3"/>
+        android:text="@string/kit_3"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_4"/>
+        android:text="@string/kit_4"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_5"/>
+        android:text="@string/kit_5"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_6"/>
+        android:text="@string/kit_6"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_7"/>
+        android:text="@string/kit_7"
+        android:onClick="onCheckboxClicked" />
 
     <CheckBox
         android:id="@+id/kit_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/kit_8"/>
+        android:text="@string/kit_8"
+        android:onClick="onCheckboxClicked" />
 
 </LinearLayout>

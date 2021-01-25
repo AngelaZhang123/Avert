@@ -12,7 +12,6 @@
         <activity android:name=".GameOverActivity"></activity>
         <activity android:name=".CampfireActivity" />
         <activity android:name=".EarthquakeActivity" />
-        <activity android:name=".SimulationActivity" />
         <activity android:name=".WildfireActivity" />
         <activity android:name=".InfoActivity" />
         <activity android:name=".CheckListActivity" />
