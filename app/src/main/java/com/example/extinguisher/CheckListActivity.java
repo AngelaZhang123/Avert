@@ -1,8 +1,13 @@
 package com.example.extinguisher;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -12,13 +17,19 @@ public class CheckListActivity extends AppCompatActivity {
 
     private CheckBox item1, item2, item3, item4, item5, item6, item7, item8;
     private boolean wasChecked1, wasChecked2, wasChecked3, wasChecked4, wasChecked5, wasChecked6, wasChecked7, wasChecked8;
-    private int points; 
+    private int points;
+
+    SharedPreferences userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
         TextView point = (TextView)findViewById(R.id.points);
+
+        userData = getSharedPreferences("data", 0);
+        SharedPreferences.Editor editor = userData.edit();
+        points = userData.getInt("Points", 0);
         point.setText("Points: "+points);
     }
 
@@ -108,6 +119,10 @@ public class CheckListActivity extends AppCompatActivity {
                 break;
         }
         TextView point = (TextView)findViewById(R.id.points);
+
+        SharedPreferences.Editor editor = userData.edit();
         point.setText("Points:"+points);
+        editor.putInt("Points",points);
+        editor.commit();
     }
 }
