@@ -16,7 +16,6 @@ import android.widget.Toast;
 public class CheckListActivity extends AppCompatActivity {
 
     private CheckBox item1, item2, item3, item4, item5, item6, item7, item8;
-    private boolean wasChecked1, wasChecked2, wasChecked3, wasChecked4, wasChecked5, wasChecked6, wasChecked7, wasChecked8;
     private int points;
 
     SharedPreferences userData;
@@ -31,96 +30,119 @@ public class CheckListActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = userData.edit();
         points = userData.getInt("Points", 0);
         point.setText("Points: "+points);
+
+        CheckBox checkBox1 = (CheckBox) findViewById(R.id.kit_1);
+        checkBox1.setChecked(userData.getBoolean("checked1",false));
+
+        CheckBox checkBox2 = (CheckBox) findViewById(R.id.kit_2);
+        checkBox2.setChecked(userData.getBoolean("checked2",false));
+
+        CheckBox checkBox3 = (CheckBox) findViewById(R.id.kit_3);
+        checkBox3.setChecked(userData.getBoolean("checked3",false));
+
+        CheckBox checkBox4 = (CheckBox) findViewById(R.id.kit_4);
+        checkBox4.setChecked(userData.getBoolean("checked4",false));
+
+        CheckBox checkBox5 = (CheckBox) findViewById(R.id.kit_5);
+        checkBox5.setChecked(userData.getBoolean("checked5",false));
+
+        CheckBox checkBox6 = (CheckBox) findViewById(R.id.kit_6);
+        checkBox6.setChecked(userData.getBoolean("checked6",false));
+
+        CheckBox checkBox7 = (CheckBox) findViewById(R.id.kit_7);
+        checkBox7.setChecked(userData.getBoolean("checked7",false));
+
+        CheckBox checkBox8 = (CheckBox) findViewById(R.id.kit_8);
+        checkBox8.setChecked(userData.getBoolean("checked8",false));
     }
 
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
+        SharedPreferences.Editor editor = userData.edit();
         boolean checked = ((CheckBox) view).isChecked();
         switch(view.getId()) {
             case R.id.kit_1:
                 if (checked) {
                     points++;
-                    wasChecked1 = true;
+                    editor.putBoolean("checked1", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked1) {
+                } else if (userData.getBoolean("checked1",false)) {
                     points--;
-                    wasChecked1 = false;
+                    editor.putBoolean("checked1", false);
                 }
                 break;
             case R.id.kit_2:
                 if (checked) {
                     points++;
-                    wasChecked2 = true;
+                    editor.putBoolean("checked2", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked2) {
+                } else if (userData.getBoolean("checked2",false)) {
                     points--;
-                    wasChecked2 = false;
+                    editor.putBoolean("checked2", false);
                 }
                 break;
             case R.id.kit_3:
                 if (checked) {
                     points++;
-                    wasChecked3 = true;
+                    editor.putBoolean("checked3", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked3) {
+                } else if (userData.getBoolean("checked3",false)) {
                     points--;
-                    wasChecked3 = false;
+                    editor.putBoolean("checked3", false);
                 }
                 break;
             case R.id.kit_4:
                 if (checked) {
                     points++;
-                    wasChecked4 = true;
+                    editor.putBoolean("checked4", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked4) {
+                } else if (userData.getBoolean("checked4",false)) {
                     points--;
-                    wasChecked4 = false;
+                    editor.putBoolean("checked4", false);
                 }
                 break;
             case R.id.kit_5:
                 if (checked) {
                     points++;
-                    wasChecked5 = true;
+                    editor.putBoolean("checked5", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked5) {
+                } else if (userData.getBoolean("checked5",false)) {
                     points--;
-                    wasChecked5 = false;
+                    editor.putBoolean("checked5", false);
                 }
                 break;
             case R.id.kit_6:
                 if (checked) {
                     points++;
-                    wasChecked6 = true;
+                    editor.putBoolean("checked6", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked6) {
+                } else if (userData.getBoolean("checked6",false)) {
                     points--;
-                    wasChecked6 = false;
+                    editor.putBoolean("checked6", false);
                 }
                 break;
             case R.id.kit_7:
                 if (checked) {
                     points++;
-                    wasChecked7 = true;
+                    editor.putBoolean("checked7", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked7) {
+                } else if (userData.getBoolean("checked7",false)) {
                     points--;
-                    wasChecked7 = false;
+                    editor.putBoolean("checked7", false);
                 }
                 break;
             case R.id.kit_8:
                 if (checked) {
                     points++;
-                    wasChecked8 = true;
+                    editor.putBoolean("checked8", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
-                } else if (wasChecked8) {
+                } else if (userData.getBoolean("checked8",false)) {
                     points--;
-                    wasChecked8 = false;
+                    editor.putBoolean("checked8", false);
                 }
                 break;
         }
         TextView point = (TextView)findViewById(R.id.points);
-
-        SharedPreferences.Editor editor = userData.edit();
         point.setText("Points:"+points);
         editor.putInt("Points",points);
         editor.commit();
