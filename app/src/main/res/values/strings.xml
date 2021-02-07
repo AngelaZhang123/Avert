@@ -29,5 +29,15 @@
     <string name="campfireNext_button">next</string>
     <string name="game_over_text">Game Over!</string>
     <string name="play_again_button">Play Again</string>
-    <string name="level1Button">Level 1: In your room</string>
+
+    <string name="kit_title">Emergency kit checklist</string>
+    <string name="kit_1">Face masks</string>
+    <string name="kit_2">Three days worth of food/water</string>
+    <string name="kit_3">Any medication</string>
+    <string name="kit_4">First aid kit</string>
+    <string name="kit_5">Flashlight</string>
+    <string name="kit_6">Radio and batteries</string>
+    <string name="kit_7">Copy of important documents</string>
+    <string name="kit_8">Cash</string>
+    <string name="points">Points: </string>
 </resources>
