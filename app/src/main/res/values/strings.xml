@@ -9,23 +9,6 @@
     <string name="earthquake_button">Earthquake Simulations</string>
     <string name="campfire_button">Level 1: Campfire Safety</string>
 
-    <string name="campfire1_text">Question one</string>
-    <string name="campfire2_text">Question two</string>
-
-    <string name="campfire1a_button">choice 1a</string>
-    <string name="campfire1b_button">choice 1b</string>
-    <string name="campfire1c_button">choice 1c</string>
-    <string name="campfire2a_button">choice 2a</string>
-    <string name="campfire2b_button">choice 2b</string>
-    <string name="campfire2c_button">choice 2c</string>
-
-    <string name="campfire1a_toast">toast 1a</string>
-    <string name="campfire1b_toast">toast 1b</string>
-    <string name="campfire1c_toast">toast 1c</string>
-    <string name="campfire2a_toast">toast 2a</string>
-    <string name="campfire2b_toast">toast 2b</string>
-    <string name="campfire2c_toast">toast 2c</string>
-
     <string name="campfireNext_button">next</string>
     <string name="game_over_text">Game Over!</string>
     <string name="play_again_button">Play Again</string>
