@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="EQ11_text">Oh no! An earthquake is starting. What should you do?</string>
+    <string name="EQ12_text">What position should you take?</string>
+    <string name="EQ13_text">The earthquake is still going on. What should you do next?</string>
+    <string name="EQ14_text">The shaking has stopped. What now?</string>
+
+    <string name="EQ11a_button">Run outside</string>
+    <string name="EQ11b_button">Duck and cover</string>
+    <string name="EQ11c_button">Hide under the desk</string>
+    <string name="EQ12a_button">Squat down</string>
+    <string name="EQ12b_button">Cover your neck</string>
+    <string name="EQ12c_button">Hold onto the desk with one hand and cover your neck with the other</string>
+    <string name="EQ13a_button">Hold your position</string>
+    <string name="EQ13b_button">Check to see possible damage</string>
+    <string name="EQ13c_button">Run away before the house collapses</string>
+    <string name="EQ14a_button">Stay where you are</string>
+    <string name="EQ14b_button">Carefully exit the house</string>
+    <string name="EQ14c_button">Run around</string>
+
+    <string name="EQ11a_toast">Trying to move once an earthquake has started is dangerous. You should stay where you currently are.</string>
+    <string name="EQ11b_toast">Always try to hide under something sturdy first to stop objects from falling onto your head</string>
+    <string name="EQ11c_toast">Nice job! Hiding under something sturdy, such as a table or desk, is the best way to keep safe</string>
+    <string name="EQ12a_toast">Always cover your head and neck because they are the most important parts of your body</string>
+    <string name="EQ12b_toast">Good choice, but holding onto the furniture is also important to steady yourself</string>
+    <string name="EQ12c_toast">Correct! This allows you to protect and steady yourself</string>
+    <string name="EQ13a_toast">Great choice! You should always stay still until the shaking has stopped</string>
+    <string name="EQ13b_toast">You should not try to move during an earthquake as it can result in more harm</string>
+    <string name="EQ13c_toast">Staying where you are is the safest option during an earthquake</string>
+    <string name="EQ14a_toast">After the shaking has stopped, it is good to move to safety and regroup with your family</string>
+    <string name="EQ14b_toast">Nice! Since the shaking has stopped, it is a great time to exit the house </string>
+    <string name="EQ14c_toast">Even though the earthquake is over, you should still be cautious especially since there is damage everywhere</string>
+</resources>

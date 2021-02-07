@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="EQ21_text">Aahh! You feel the ground start to shake! What do you do?</string>
+    <string name="EQ22_text">What should you do now?</string>
+    <string name="EQ23_text">The shaking has stopped. Are you in the clear?</string>
+
+    <string name="EQ21a_button">Take cover under a tree</string>
+    <string name="EQ21b_button">Go to an open space</string>
+    <string name="EQ21c_button">Hide inside a building</string>
+    <string name="EQ22a_button">Continue walking around</string>
+    <string name="EQ22b_button">Shout for help</string>
+    <string name="EQ22c_button">Get low</string>
+    <string name="EQ23a_button">Yes, the earthquake is over</string>
+    <string name="EQ23b_button">No, if you move you will fall down</string>
+    <string name="EQ23c_button">Mostly, but still be on the lookout for aftershocks</string>
+
+    <string name="EQ21a_toast">You always want to go away from things that can fall on you first</string>
+    <string name="EQ21b_toast">Good plan! Being in an area away from all objects ensures that nothing can fall on you and harm you</string>
+    <string name="EQ21c_toast">When you are outside you want to stay outside. If you go into a building, it could end up collapsing and hurting you!</string>
+    <string name="EQ22a_toast">You should always try to stay still during an earthquake</string>
+    <string name="EQ22b_toast"> During an earthquake, if you are not hurt shouting for help will not do anything. You should first try to keep yourself safe</string>
+    <string name="EQ22c_toast">Nice! You should always get low so that the earthquake can not knock you over</string>
+    <string name="EQ23a_toast">You are correct, but you should still be on the lookout for possible aftershocks</string>
+    <string name="EQ23b_toast">Although there can be aftershocks, you are not in immediate danger so you are free to move</string>
+    <string name="EQ23c_toast">Great choice! There is always the possibility of an aftershock and you should be prepared for it</string>
+</resources>

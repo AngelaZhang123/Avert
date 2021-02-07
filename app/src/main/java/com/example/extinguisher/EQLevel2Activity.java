@@ -2,42 +2,38 @@ package com.example.extinguisher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class EQLevel1Activity extends AppCompatActivity {
+public class EQLevel2Activity extends AppCompatActivity {
+
     private Button backButton, choice1Button, choice2Button, choice3Button, nextButton;
     private TextView question, finish;
     private int mCurrIndex = 0;
     private int choice = -1;
 
     private Question [] mQuestions = new Question [] {
-            new Question(R.string.EQ11_text, 3),
-            new Question(R.string.EQ12_text, 3),
-            new Question(R.string.EQ13_text, 1),
-            new Question(R.string.EQ14_text, 2)
+            new Question(R.string.EQ11_text, 2),
+            new Question(R.string.EQ22_text, 3),
+            new Question(R.string.EQ23_text, 3)
     };
     private Answer [][] mAnswers = new Answer [][] {
             {
-                    new Answer(R.string.EQ11a_button, R.string.EQ11a_toast),
-                    new Answer(R.string.EQ11b_button, R.string.EQ11b_toast),
-                    new Answer(R.string.EQ11c_button, R.string.EQ11c_toast)
+                    new Answer(R.string.EQ21a_button, R.string.EQ21a_toast),
+                    new Answer(R.string.EQ21b_button, R.string.EQ21b_toast),
+                    new Answer(R.string.EQ21c_button, R.string.EQ21c_toast)
             }, {
-            new Answer(R.string.EQ12a_button, R.string.EQ12a_toast),
-            new Answer(R.string.EQ12b_button, R.string.EQ12b_toast),
-            new Answer(R.string.EQ12c_button, R.string.EQ12c_toast)
+            new Answer(R.string.EQ22a_button, R.string.EQ22a_toast),
+            new Answer(R.string.EQ22b_button, R.string.EQ22b_toast),
+            new Answer(R.string.EQ22c_button, R.string.EQ22c_toast)
     }, {
-            new Answer(R.string.EQ13a_button, R.string.EQ13a_toast),
-            new Answer(R.string.EQ13b_button, R.string.EQ13b_toast),
-            new Answer(R.string.EQ13c_button, R.string.EQ13c_toast)
-    }, {
-            new Answer(R.string.EQ14a_button, R.string.EQ14a_toast),
-            new Answer(R.string.EQ14b_button, R.string.EQ14b_toast),
-            new Answer(R.string.EQ14c_button, R.string.EQ14c_toast)
+            new Answer(R.string.EQ23a_button, R.string.EQ23a_toast),
+            new Answer(R.string.EQ23b_button, R.string.EQ23b_toast),
+            new Answer(R.string.EQ23c_button, R.string.EQ23c_toast)
     }
     };
 
@@ -84,7 +80,7 @@ public class EQLevel1Activity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswers.length) {
-                    Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
+                    Intent intent = new Intent(EQLevel2Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
                 else updateQuestion();
@@ -107,7 +103,7 @@ public class EQLevel1Activity extends AppCompatActivity {
             choice3Button.setEnabled(false);
         }
         int text = mAnswers[mCurrIndex][choice].getToastTextID();
-        Toast.makeText(EQLevel1Activity.this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(EQLevel2Activity.this, text, Toast.LENGTH_SHORT).show();
     }
 
     private void updateQuestion() {

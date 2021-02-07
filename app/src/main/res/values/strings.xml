@@ -29,4 +29,5 @@
     <string name="campfireNext_button">next</string>
     <string name="game_over_text">Game Over!</string>
     <string name="play_again_button">Play Again</string>
+    <string name="level1Button">Level 1: In your room</string>
 </resources>

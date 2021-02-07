@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CampfireActivity"></activity>
+        <activity android:name=".EQLevel2Activity"></activity>
+        <activity android:name=".EQLevel1Activity" />
         <activity android:name=".EarthquakeActivity" />
+        <activity android:name=".CampfireActivity" />
         <activity android:name=".SimulationActivity" />
         <activity android:name=".WildfireActivity" />
         <activity android:name=".InfoActivity" />

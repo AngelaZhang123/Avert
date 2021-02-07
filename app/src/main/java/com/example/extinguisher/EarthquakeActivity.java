@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+
 public class EarthquakeActivity extends AppCompatActivity {
-    private Button L1Button;
+    private Button L1Button, L2Button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,15 @@ public class EarthquakeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EarthquakeActivity.this, EQLevel1Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        L2Button = (Button) findViewById(R.id.level2Button);
+        L2Button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EarthquakeActivity.this, EQLevel2Activity.class);
                 startActivity(intent);
             }
         });
