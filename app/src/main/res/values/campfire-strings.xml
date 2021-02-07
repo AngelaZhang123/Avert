@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="campfire1_text">You are on a camping trip with your
+        family and are looking for an area to set up your campfire.
+        You see four possible locations to dig your fire pit. Which
+        of the following locations do you choose?</string>
+    <string name="campfire2_text">As you are sitting around the fire
+        with your five year old brother and parents, you need to go
+        to the restroom. You go to the bathroom with:</string>
+    <string name="campfire3_text">Your family starts to roast
+        marshmallows, but your marshmallow catches on fire! What do
+        you do?</string>
+    <string name="campfire4_text">It\'s getting late, and your family
+    decides to call it a day. What do you do?</string>
+    <string name="campfire5_text">You know that your campfire has been
+        fully extinguished and it is safe to leave when:</string>
+
+    <string name="campfire1a">under a tree with low branches</string>
+    <string name="campfire1b">in an open area</string>
+    <string name="campfire1c">in a windy area</string>
+    <string name="campfire2a">your brother</string>
+    <string name="campfire2b">your parents</string>
+    <string name="campfire2c">your entire family</string>
+    <string name="campfire3a">blow out the fire</string>
+    <string name="campfire3b">wave the marshmallow around until the flame dies</string>
+    <string name="campfire3c">throw the marshmallow away as far as possible</string>
+    <string name="campfire4a">try to blow out the fire with all your might</string>
+    <string name="campfire4b">just leave it there, it will eventually go out on its own</string>
+    <string name="campfire4c">pour lots of water on the fire</string>
+    <string name="campfire5a">You\'ve poured your entire bucket of water on the fire.</string>
+    <string name="campfire5b">The leftover coal and ash is cold to the touch, and you don\'t see any more embers.</string>
+    <string name="campfire5c">There are still a few embers exposed, but they\'ll all go out eventually.</string>
+
+    <string name="cf_toast1a">Oh no! One of the tree branches catches on fire. Try again.</string>
+    <string name="cf_toast1b">Great idea! There\'s nothing around you that can catch on fire.</string>
+    <string name="cf_toast1c">Uh oh! The wind blows the fire towards a nearby bush, and it catches on fire. Try again.</string>
+    <string name="cf_toast2a">Good job! This means that there are still adults attending the fire.</string>
+    <string name="cf_toast2b">Uh oh. The only person left at the fire is your little brother.
+        There should always be an adult at the fire. Try again.</string>
+    <string name="cf_toast2c">Now everybody has left the fire, but there should always be an adult attending it. Try again.</string>
+    <string name="cf_toast3a">Good job! You safely blew out your burning marshmallow.</string>
+    <string name="cf_toast3b">Oh no! The marshmallow hits your brother as you\'re waving it around
+        and he gets burned. Try again.</string>
+    <string name="cf_toast3c">Oh no! Your burning marshmallow lands in a bush, which catches on fire. Try again.</string>
+    <string name="cf_toast4a">You won\'t be able to extinguish your fire like this. Try again.</string>
+    <string name="cf_toast4b">You cannot be sure that the fire goes out. After you leave,
+        it spreads to a bush, which catches on fire. Try again.</string>
+    <string name="cf_toast4c">Great idea! Pouring water on the fire will make it go out.</string>
+    <string name="cf_toast5a">Even though you\'ve poured the entire bucket, there could still be leftover
+        embers, which may not go out on their own. Try again.</string>
+    <string name="cf_toast5b">Good job! Your fire has been completely extinguished, and it is safe to leave.</string>
+    <string name = "cf_toast5c">Uh oh! The fire doesn\'t go out, and there is a gust of wind that blows it towards
+        a bush, which catches on fire. Try again.</string>
+</resources>

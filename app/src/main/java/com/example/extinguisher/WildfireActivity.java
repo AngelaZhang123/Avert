@@ -10,7 +10,7 @@ import android.widget.Button;
 
 public class WildfireActivity extends AppCompatActivity {
 
-    private Button mCampButton;
+    private Button mCampButton, mHouseButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,15 @@ public class WildfireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(WildfireActivity.this, CampfireActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mHouseButton = (Button) findViewById(R.id.house_button);
+        mHouseButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WildfireActivity.this, HouseActivity.class);
                 startActivity(intent);
             }
         });

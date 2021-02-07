@@ -11,4 +11,10 @@
         android:layout_height="wrap_content"
         android:text="@string/campfire_button" />
 
+    <Button
+        android:id="@+id/house_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level 2: Fire Safety at Home" />
+
 </LinearLayout>

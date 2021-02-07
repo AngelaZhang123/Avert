@@ -9,44 +9,42 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class CampfireActivity extends AppCompatActivity {
+public class HouseActivity extends AppCompatActivity {
 
     private Button mAButton, mBButton, mCButton, mNextButton, mBackButton;
     private int mCurrIndex = 0;
     private int choice = -1;
     private TextView mQuestionTextView;
     private int [][] mAnswerArr = new int [][] {
-            {R.string.campfire1a, R.string.campfire1b, R.string.campfire1c},
-            {R.string.campfire2a, R.string.campfire2b, R.string.campfire2c},
-            {R.string.campfire3a, R.string.campfire3b, R.string.campfire3c},
-            {R.string.campfire4a, R.string.campfire4b, R.string.campfire4c},
-            {R.string.campfire5a, R.string.campfire5b, R.string.campfire5c}
+            {R.string.house1a, R.string.house1b, R.string.house1c},
+            {R.string.house2a, R.string.house2b, R.string.house2c},
+            {R.string.house3a, R.string.house3b, R.string.house3c},
+            {R.string.house4a, R.string.house4b, R.string.house4c},
+            {R.string.house5a, R.string.house5b, R.string.house5c}
     };
     private int [][] mToastArr = new int [][] {
-            {R.string.cf_toast1a, R.string.cf_toast1b, R.string.cf_toast1c},
-            {R.string.cf_toast2a, R.string.cf_toast2b, R.string.cf_toast2c},
-            {R.string.cf_toast3a, R.string.cf_toast3b, R.string.cf_toast3c},
-            {R.string.cf_toast4a, R.string.cf_toast4b, R.string.cf_toast4c},
-            {R.string.cf_toast5a, R.string.cf_toast5b, R.string.cf_toast5c}
+            {R.string.house_toast1a, R.string.house_toast1b, R.string.house_toast1c},
+            {R.string.house_toast2a, R.string.house_toast2b, R.string.house_toast2c},
+            {R.string.house_toast3a, R.string.house_toast3b, R.string.house_toast3c},
+            {R.string.house_toast4a, R.string.house_toast4b, R.string.house_toast4c},
+            {R.string.house_toast5a, R.string.house_toast4a, R.string.house_toast5c}
     };
-
-    private Question [] mQuestions = new Question [] {
-            new Question(R.string.campfire1_text, 1),
-            new Question(R.string.campfire2_text, 0),
-            new Question(R.string.campfire3_text, 0),
-            new Question(R.string.campfire4_text, 2),
-            new Question(R.string.campfire5_text, 1)
+    private Question [] mQuestionArr = new Question [] {
+            new Question(R.string.h1_text, 1),
+            new Question(R.string.h2_text, 0),
+            new Question(R.string.h3_text, 2),
+            new Question(R.string.h4_text, 0),
+            new Question(R.string.h5_text, 1)
     };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_campfire);
+        setContentView(R.layout.activity_house);
 
-        mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-        mAButton = (Button) findViewById(R.id.campfirea_button);
-        mBButton = (Button) findViewById(R.id.campfireb_button);
-        mCButton = (Button) findViewById(R.id.campfirec_button);
+        mQuestionTextView = (TextView) findViewById(R.id.question_text);
+        mAButton = (Button) findViewById(R.id.housea_button);
+        mBButton = (Button) findViewById(R.id.houseb_button);
+        mCButton = (Button) findViewById(R.id.housec_button);
         mNextButton = (Button) findViewById(R.id.next_button);
         updateQuestion();
 
@@ -82,7 +80,7 @@ public class CampfireActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswerArr.length) {
-                    Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
+                    Intent intent = new Intent(HouseActivity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
                 else updateQuestion();
@@ -93,21 +91,21 @@ public class CampfireActivity extends AppCompatActivity {
         mBackButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CampfireActivity.this, WildfireActivity.class);
+                Intent intent = new Intent(HouseActivity.this, WildfireActivity.class);
                 startActivity(intent);
             }
         });
     }
 
     private void setToastText() {
-        if(choice == mQuestions[mCurrIndex].getCorrectAnswer()) {
+        if(choice == mQuestionArr[mCurrIndex].getCorrectAnswer()) {
             mAButton.setEnabled(false);
             mBButton.setEnabled(false);
             mCButton.setEnabled(false);
             mNextButton.setVisibility(View.VISIBLE);
         }
         int text = mToastArr[mCurrIndex][choice];
-        Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_LONG).show();
+        Toast.makeText(HouseActivity.this, text, Toast.LENGTH_LONG).show();
     }
 
     private void updateQuestion() {
@@ -115,7 +113,7 @@ public class CampfireActivity extends AppCompatActivity {
         mAButton.setEnabled(true);
         mBButton.setEnabled(true);
         mCButton.setEnabled(true);
-        int text = mQuestions[mCurrIndex].getQuestionTextID();
+        int text = mQuestionArr[mCurrIndex].getQuestionTextID();
         mQuestionTextView.setText(text);
 
         mAButton.setText(mAnswerArr[mCurrIndex][0]);

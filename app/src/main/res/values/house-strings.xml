@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="h1_text">Oh no! You are awoken from sleep and there\'s a fire in your house!
+        Your first step is to:</string>
+    <string name="h2_text">You have to get out of your bedroom, but your door is warm to the touch.
+        What do you do?</string>
+    <string name="h3_text">Let\'s say your only choice is to walk through smoke. What do you do?</string>
+    <string name="h4_text">Uh oh! Your clothing has caught on fire! What do you do?</string>
+    <string name="h5_text">Now you are safely your house. What is your next step?</string>
+
+    <string name="house1a">Call the fire department</string>
+    <string name="house1b">Get out of the house</string>
+    <string name="house1c">Gather all your most important belongings</string>
+    <string name="house2a">Go out your window.</string>
+    <string name="house2b">Go out the door.</string>
+    <string name="house2c">Wait for the firefighters to show up and save you.</string>
+    <string name="house3a">Run through the smoke as fast as you can.</string>
+    <string name="house3b">Walk backwards through the smoke.</string>
+    <string name="house3c">Stay low to the ground and crawl towards your exit.</string>
+    <string name="house4a">Stop what you\'re doing, drop to the ground, and roll until the flames go out.</string>
+    <string name="house4b">Run out of the house as fast as you can.</string>
+    <string name="house4c">Run to the nearest bathroom and dump water on yourself.</string>
+    <string name="house5a">Run as far away from your burning house as possible.</string>
+    <string name="house5b">Go to your family\'s previously designated meeting spot and call 911.</string>
+    <string name="house5c">Celebrate! You made it safely out of the fire!</string>
+
+    <string name="house_toast1a">You may not have time to call the fire department. Try again.</string>
+    <string name="house_toast1b">Good job! The first thing you do should be to get yourself
+        safely out of the house.</string>
+    <string name="house_toast1c">You may not have time to gather your belongings. Your own safety
+        should be the priority! Try again.</string>
+    <string name="house_toast2a">Great idea! A warm door likely means the fire is right outside your
+        room, so going out through the window would be the best idea.</string>
+    <string name="house_toast2b">If the door is warm to the touch, the fire is likely right outside
+        your room, and you should open that door. Try again.</string>
+    <string name="house_toast2c">Only stay where you are if there is no way to exit the building
+        safely. Otherwise, your priority is getting yourself out. Try again.</string>
+    <string name="house_toast3a">This is not a good idea. You may end up inhaling a lot of smoke,
+        which will be bad for your health. Try again.</string>
+    <string name="house_toast3b">Walking backwards won\'t prevent you from inhaling smoke, which is
+        bad for your health. Try again.</string>
+    <string name="house_toast3c">Great choice! Smoke rises towards the ceiling, so staying low to the
+        ground helps you avoid inhaling it.</string>
+    <string name="house_toast4a">Great choice! If your clothes catch on fire, you should stop, drop,
+        and roll to put out the flames.</string>
+    <string name="house_toast4b">Running will only make the fire burn faster. Try again.</string>
+    <string name="house_toast4c">Your bathroom might be too far away. This is not the fastest
+        way to put out the flames.</string>
+    <string name="house_toast5a">Don\'t run away, because people will not know whether you made
+        it out of the house safely.</string>
+    <string name="house_toast5b">Good choice! Going to a meeting spot allows you and your family
+        to know if everyone made it out of the house safely.</string>
+    <string name="house_toast5c">Don\'t run away, because people will not know whether you made
+        it out of the house safely. Instead, call 911 once you get out of the building.</string>
+</resources>
