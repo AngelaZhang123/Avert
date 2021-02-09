@@ -15,32 +15,24 @@ public class EQLevel1Activity extends AppCompatActivity {
     private int mCurrIndex = 0;
     private int choice = -1;
 
-    private Question [] mQuestions = new Question [] {
+    private int [][] mAnswerArr = new int [][] {
+            {R.string.EQ11a_button, R.string.EQ11b_button, R.string.EQ11c_button},
+            {R.string.EQ12a_button, R.string.EQ12b_button, R.string.EQ12c_button},
+            {R.string.EQ13a_button, R.string.EQ13b_button, R.string.EQ13c_button},
+            {R.string.EQ14a_button, R.string.EQ14b_button, R.string.EQ14c_button}
+    };
+    private int [][] mToastArr = new int [][] {
+            {R.string.EQ11a_toast, R.string.EQ11b_toast, R.string.EQ11c_toast},
+            {R.string.EQ12a_toast, R.string.EQ12b_toast, R.string.EQ12c_toast},
+            {R.string.EQ13a_toast, R.string.EQ13b_toast, R.string.EQ13c_toast},
+            {R.string.EQ14a_toast, R.string.EQ14b_toast, R.string.EQ14c_toast},
+    };
+    private Question [] mQuestionArr = new Question [] {
             new Question(R.string.EQ11_text, 3),
             new Question(R.string.EQ12_text, 3),
             new Question(R.string.EQ13_text, 1),
             new Question(R.string.EQ14_text, 2)
     };
-    private Answer [][] mAnswers = new Answer [][] {
-            {
-                    new Answer(R.string.EQ11a_button, R.string.EQ11a_toast),
-                    new Answer(R.string.EQ11b_button, R.string.EQ11b_toast),
-                    new Answer(R.string.EQ11c_button, R.string.EQ11c_toast)
-            }, {
-            new Answer(R.string.EQ12a_button, R.string.EQ12a_toast),
-            new Answer(R.string.EQ12b_button, R.string.EQ12b_toast),
-            new Answer(R.string.EQ12c_button, R.string.EQ12c_toast)
-    }, {
-            new Answer(R.string.EQ13a_button, R.string.EQ13a_toast),
-            new Answer(R.string.EQ13b_button, R.string.EQ13b_toast),
-            new Answer(R.string.EQ13c_button, R.string.EQ13c_toast)
-    }, {
-            new Answer(R.string.EQ14a_button, R.string.EQ14a_toast),
-            new Answer(R.string.EQ14b_button, R.string.EQ14b_toast),
-            new Answer(R.string.EQ14c_button, R.string.EQ14c_toast)
-    }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +75,7 @@ public class EQLevel1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswers.length) {
+                if(mCurrIndex == mAnswerArr.length) {
                     Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
@@ -99,14 +91,14 @@ public class EQLevel1Activity extends AppCompatActivity {
             choice2Button.setEnabled(false);
         else
             choice3Button.setEnabled(false);
-        if(num ==mQuestions[mCurrIndex].getCorrectAnswer()) {
+        if(num ==mQuestionArr[mCurrIndex].getCorrectAnswer()) {
             nextButton.setEnabled(true);
             nextButton.setVisibility(View.VISIBLE);
             choice1Button.setEnabled(false);
             choice2Button.setEnabled(false);
             choice3Button.setEnabled(false);
         }
-        int text = mAnswers[mCurrIndex][choice].getToastTextID();
+        int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(EQLevel1Activity.this, text, Toast.LENGTH_SHORT).show();
     }
 
@@ -116,17 +108,10 @@ public class EQLevel1Activity extends AppCompatActivity {
         choice1Button.setEnabled(true);
         choice2Button.setEnabled(true);
         choice3Button.setEnabled(true);
-        int text = mQuestions[mCurrIndex].getQuestionTextID();
+        int text = mQuestionArr[mCurrIndex].getQuestionTextID();
         question.setText(text);
-        text = mAnswers[mCurrIndex][0].getAnswerTextID();
-        choice1Button.setText(text);
-        text = mAnswers[mCurrIndex][1].getAnswerTextID();
-        choice2Button.setText(text);
-        text = mAnswers[mCurrIndex][2].getAnswerTextID();
-        choice3Button.setText(text);
-        text = mAnswers[mCurrIndex][0].getAnswerTextID();
-        choice3Button.setText(text);
-        text = mAnswers[mCurrIndex][2].getAnswerTextID();
-        choice3Button.setText(text);
+        choice1Button.setText(mAnswerArr[mCurrIndex][0]);
+        choice2Button.setText(mAnswerArr[mCurrIndex][1]);
+        choice3Button.setText(mAnswerArr[mCurrIndex][2]);
     }
 }

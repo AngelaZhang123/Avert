@@ -16,27 +16,22 @@ public class EQLevel2Activity extends AppCompatActivity {
     private int mCurrIndex = 0;
     private int choice = -1;
 
-    private Question [] mQuestions = new Question [] {
+
+    private int [][] mAnswerArr = new int [][] {
+            {R.string.EQ21a_button, R.string.EQ21b_button, R.string.EQ21c_button},
+            {R.string.EQ22a_button, R.string.EQ22b_button, R.string.EQ22c_button},
+            {R.string.EQ23a_button, R.string.EQ23b_button, R.string.EQ23c_button},
+    };
+    private int [][] mToastArr = new int [][] {
+            {R.string.EQ21a_toast, R.string.EQ21b_toast, R.string.EQ21c_toast},
+            {R.string.EQ22a_toast, R.string.EQ22b_toast, R.string.EQ22c_toast},
+            {R.string.EQ23a_toast, R.string.EQ23b_toast, R.string.EQ23c_toast}
+    };
+    private Question [] mQuestionArr = new Question [] {
             new Question(R.string.EQ11_text, 2),
             new Question(R.string.EQ22_text, 3),
             new Question(R.string.EQ23_text, 3)
     };
-    private Answer [][] mAnswers = new Answer [][] {
-            {
-                    new Answer(R.string.EQ21a_button, R.string.EQ21a_toast),
-                    new Answer(R.string.EQ21b_button, R.string.EQ21b_toast),
-                    new Answer(R.string.EQ21c_button, R.string.EQ21c_toast)
-            }, {
-            new Answer(R.string.EQ22a_button, R.string.EQ22a_toast),
-            new Answer(R.string.EQ22b_button, R.string.EQ22b_toast),
-            new Answer(R.string.EQ22c_button, R.string.EQ22c_toast)
-    }, {
-            new Answer(R.string.EQ23a_button, R.string.EQ23a_toast),
-            new Answer(R.string.EQ23b_button, R.string.EQ23b_toast),
-            new Answer(R.string.EQ23c_button, R.string.EQ23c_toast)
-    }
-    };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +74,7 @@ public class EQLevel2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswers.length) {
+                if(mCurrIndex == mAnswerArr.length) {
                     Intent intent = new Intent(EQLevel2Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
@@ -95,14 +90,14 @@ public class EQLevel2Activity extends AppCompatActivity {
             choice2Button.setEnabled(false);
         else
             choice3Button.setEnabled(false);
-        if(num ==mQuestions[mCurrIndex].getCorrectAnswer()) {
+        if(num ==mQuestionArr[mCurrIndex].getCorrectAnswer()) {
             nextButton.setEnabled(true);
             nextButton.setVisibility(View.VISIBLE);
             choice1Button.setEnabled(false);
             choice2Button.setEnabled(false);
             choice3Button.setEnabled(false);
         }
-        int text = mAnswers[mCurrIndex][choice].getToastTextID();
+        int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(EQLevel2Activity.this, text, Toast.LENGTH_SHORT).show();
     }
 
@@ -112,17 +107,10 @@ public class EQLevel2Activity extends AppCompatActivity {
         choice1Button.setEnabled(true);
         choice2Button.setEnabled(true);
         choice3Button.setEnabled(true);
-        int text = mQuestions[mCurrIndex].getQuestionTextID();
+        int text = mQuestionArr[mCurrIndex].getQuestionTextID();
         question.setText(text);
-        text = mAnswers[mCurrIndex][0].getAnswerTextID();
-        choice1Button.setText(text);
-        text = mAnswers[mCurrIndex][1].getAnswerTextID();
-        choice2Button.setText(text);
-        text = mAnswers[mCurrIndex][2].getAnswerTextID();
-        choice3Button.setText(text);
-        text = mAnswers[mCurrIndex][0].getAnswerTextID();
-        choice3Button.setText(text);
-        text = mAnswers[mCurrIndex][2].getAnswerTextID();
-        choice3Button.setText(text);
+        choice1Button.setText(mAnswerArr[mCurrIndex][0]);
+        choice2Button.setText(mAnswerArr[mCurrIndex][1]);
+        choice3Button.setText(mAnswerArr[mCurrIndex][2]);
     }
 }
