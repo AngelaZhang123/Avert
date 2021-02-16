@@ -3,18 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/lightBlue">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="268dp"
+        android:fontFamily="@font/leaguespartan"
+        android:textColor="@android:color/white"
+        android:text="Simulations"
+        android:textSize="35sp" />
 
     <Button
         android:id="@+id/wildfire_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightBlue"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/wildfire_button" />
 
     <Button
         android:id="@+id/earthquake_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/lightBlue"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/earthquake_button" />
+
+
 
 </LinearLayout>

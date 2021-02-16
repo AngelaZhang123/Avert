@@ -3,30 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/blue">
 
     <Button
         android:id="@+id/profile_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/profile_button" />
 
     <Button
         android:id="@+id/checklist_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/checklist_button" />
 
     <Button
         android:id="@+id/simulation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/simulation_button"/>
 
     <Button
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/info_button" />
 
 </LinearLayout>

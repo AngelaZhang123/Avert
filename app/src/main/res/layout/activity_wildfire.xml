@@ -5,16 +5,32 @@
     android:gravity="center"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="268dp"
+        android:fontFamily="@font/leaguespartan"
+        android:textColor="@color/blue"
+        android:text="Wildfire"
+        android:textSize="35sp" />
+
     <Button
         android:id="@+id/campfire_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/lightBlue"
+        android:fontFamily="@font/josefinsansreg"
         android:text="@string/campfire_button" />
 
     <Button
         android:id="@+id/house_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/lightBlue"
+        android:fontFamily="@font/josefinsansreg"
         android:text="Level 2: Fire Safety at Home" />
 
 </LinearLayout>
