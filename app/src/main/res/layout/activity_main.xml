@@ -20,20 +20,22 @@
         android:fontFamily="@font/josefinsansreg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.702" />
+        app:layout_constraintVertical_bias="0.6"
+        android:minWidth="150dp"  />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
+        android:layout_marginBottom="200dp"
         android:fontFamily="@font/archive"
         android:textColor="@android:color/white"
         android:text="AVERT"
         android:textSize="50sp"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/menu_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

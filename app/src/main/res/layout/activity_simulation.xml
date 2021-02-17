@@ -1,37 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/lightBlue">
+    android:background="@color/lightBlue"
+    android:gravity="center">
+
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
-        android:fontFamily="@font/leaguespartan"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+
+    <TextView
+        android:id="@+id/simulation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/leaguespartan"
         android:text="Simulations"
-        android:textSize="35sp" />
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/wildfire_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/lightBlue"
+        android:layout_width="170dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="15dp"
+        android:backgroundTint="@color/lightGrey"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/wildfire_button" />
+        android:text="@string/wildfire_button"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simulation_title" />
 
     <Button
         android:id="@+id/earthquake_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/lightBlue"
+        android:layout_width="170dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="@color/lightGrey"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/earthquake_button" />
-
-
-
-</LinearLayout>
+        android:text="@string/earthquake_button"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/wildfire_button"
+        app:layout_constraintTop_toBottomOf="@+id/simulation_title" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,45 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/blue">
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
     <Button
         android:id="@+id/profile_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/profile_button" />
+        android:minWidth="300dp"
+        android:text="@string/profile_button"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
 
     <Button
         android:id="@+id/checklist_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/checklist_button" />
+        android:minWidth="300dp"
+        android:text="@string/checklist_button"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simulation_button" />
 
     <Button
         android:id="@+id/simulation_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/simulation_button"/>
+        android:minWidth="300dp"
+        android:text="@string/simulation_button"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_button" />
 
     <Button
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:text="@string/info_button" />
+        android:minWidth="300dp"
+        android:text="@string/info_button"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checklist_button" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
