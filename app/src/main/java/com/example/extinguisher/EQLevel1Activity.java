@@ -1,3 +1,4 @@
+
 package com.example.extinguisher;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -76,6 +77,9 @@ public class EQLevel1Activity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswerArr.length) {
+                    PreferenceManager manager = PreferenceManager.getInstance();
+                    manager.initialize(getApplicationContext());
+                    manager.setComplete(true, 1);
                     Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }

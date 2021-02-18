@@ -3,6 +3,7 @@ package com.example.extinguisher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ public class CampfireActivity extends AppCompatActivity {
     private int mCurrIndex = 0;
     private int choice = -1;
     private TextView mQuestionTextView;
+
     private int [][] mAnswerArr = new int [][] {
             {R.string.campfire1a, R.string.campfire1b, R.string.campfire1c},
             {R.string.campfire2a, R.string.campfire2b, R.string.campfire2c},
@@ -82,6 +84,9 @@ public class CampfireActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswerArr.length) {
+                    PreferenceManager manager = PreferenceManager.getInstance();
+                    manager.initialize(getApplicationContext());
+                    manager.setComplete(true, 0);
                     Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
