@@ -30,36 +30,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="52dp"
+        android:src="@drawable/home_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="180dp"
+        android:src="@drawable/profile"
+        app:layout_constraintEnd_toStartOf="@+id/profile_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+
     <Button
         android:id="@+id/profile_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:minWidth="300dp"
+        android:minWidth="220dp"
         android:text="@string/profile_button"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:layout_marginTop="200dp"
+        android:layout_marginRight = "40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView"
+         />
 
-    <Button
-        android:id="@+id/checklist_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:fontFamily="@font/josefinsansreg"
-        android:minWidth="300dp"
-        android:text="@string/checklist_button"
-        android:textAllCaps="false"
-        android:textSize="30sp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/play"
+        app:layout_constraintEnd_toStartOf="@+id/simulation_button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simulation_button" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/simulation_button"
@@ -67,14 +82,48 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:minWidth="300dp"
+        android:minWidth="220dp"
         android:text="@string/simulation_button"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight = "40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_button" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/checkbox"
+        app:layout_constraintEnd_toStartOf="@+id/checklist_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/checklist_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:fontFamily="@font/josefinsansreg"
+        android:minWidth="220dp"
+        android:text="@string/checklist_button"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight = "40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simulation_button" />
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/info"
+        app:layout_constraintEnd_toStartOf="@+id/info_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <Button
         android:id="@+id/info_button"
@@ -82,13 +131,13 @@
         android:layout_height="wrap_content"
         android:background="@android:color/white"
         android:fontFamily="@font/josefinsansreg"
-        android:minWidth="300dp"
+        android:minWidth="220dp"
         android:text="@string/info_button"
         android:textAllCaps="false"
         android:textSize="30sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginRight = "40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checklist_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
