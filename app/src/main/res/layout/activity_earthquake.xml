@@ -1,22 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical" >
+    android:gravity="center">
 
-    <Button
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+
+    <TextView
+        android:id="@+id/earthquake_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:fontFamily="@font/leaguespartan"
+        android:text="Earthquakes"
+        android:textColor="@color/blue"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
         android:id="@+id/level1Button"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="125dp"
+        android:src="@drawable/bed"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@color/lightGrey"
+        android:fontFamily="@font/josefinsansreg"
+        android:text="Level 1: In Your Room"
+        android:textColor="@color/lightBlue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/earthquake_title" />
+
+    <TextView
+        android:id="@+id/level1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 1: In your room"
-        android:textSize="14sp" />
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/josefinsansreg"
+        android:text="Level 1"
+        android:textColor="@color/blue"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/level1Button"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
-    <Button
+    <TextView
+        android:id="@+id/bed_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginLeft="30dp"
+        android:fontFamily="@font/antic"
+        android:text="In Your Room"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/level1Button" />
+
+    <ImageButton
         android:id="@+id/level2Button"
+        android:layout_width="120dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/tree"
+        android:scaleType="fitCenter"
+        android:fontFamily="@font/josefinsansreg"
+        android:text="Level 2: Outside"
+        android:textColor="@color/lightBlue"
+        android:backgroundTint="@color/lightGrey"
+        app:layout_constraintStart_toEndOf="@+id/level1Button"
+        app:layout_constraintTop_toBottomOf="@+id/earthquake_title" />
+
+    <TextView
+        android:id="@+id/level2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level 2: Outside"
-        android:textSize="14sp" />
+        android:layout_marginStart="62dp"
+        android:layout_marginLeft="62dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/josefinsansreg"
+        android:text="Level 2"
+        android:textColor="@color/blue"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toTopOf="@+id/level2Button"
+        app:layout_constraintStart_toEndOf="@+id/level1" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/tree_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/antic"
+        android:text="Outside"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toEndOf="@+id/bed_title"
+        app:layout_constraintTop_toBottomOf="@+id/level2Button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
