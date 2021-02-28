@@ -75,6 +75,9 @@ public class EQLevel2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswerArr.length) {
+                    PreferenceManager manager = PreferenceManager.getInstance();
+                    manager.initialize(getApplicationContext());
+                    manager.setComplete(true, 3);
                     Intent intent = new Intent(EQLevel2Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }

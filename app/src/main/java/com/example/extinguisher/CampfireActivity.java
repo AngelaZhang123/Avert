@@ -16,6 +16,7 @@ public class CampfireActivity extends AppCompatActivity {
     private int mCurrIndex = 0;
     private int choice = -1;
     private TextView mQuestionTextView;
+    private int lives;
 
     private int [][] mAnswerArr = new int [][] {
             {R.string.campfire1a, R.string.campfire1b, R.string.campfire1c},
@@ -31,7 +32,6 @@ public class CampfireActivity extends AppCompatActivity {
             {R.string.cf_toast4a, R.string.cf_toast4b, R.string.cf_toast4c},
             {R.string.cf_toast5a, R.string.cf_toast5b, R.string.cf_toast5c}
     };
-
     private Question [] mQuestions = new Question [] {
             new Question(R.string.campfire1_text, 1),
             new Question(R.string.campfire2_text, 0),
@@ -45,6 +45,7 @@ public class CampfireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campfire);
 
+        lives = 2;
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mAButton = (Button) findViewById(R.id.campfirea_button);
         mBButton = (Button) findViewById(R.id.campfireb_button);
@@ -83,10 +84,14 @@ public class CampfireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length) {
+                if(mCurrIndex == mAnswerArr.length || lives == 0) {
                     PreferenceManager manager = PreferenceManager.getInstance();
                     manager.initialize(getApplicationContext());
-                    manager.setComplete(true, 0);
+                    if(lives == 0) manager.setStars(0, 0);
+                    else {
+                        manager.setComplete(true, 0);
+                        manager.setStars(0, lives);
+                    }
                     Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
@@ -111,6 +116,7 @@ public class CampfireActivity extends AppCompatActivity {
             mCButton.setEnabled(false);
             mNextButton.setVisibility(View.VISIBLE);
         }
+        else lives--;
         int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_LONG).show();
     }

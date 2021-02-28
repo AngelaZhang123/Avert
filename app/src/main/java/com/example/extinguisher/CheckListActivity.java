@@ -19,6 +19,7 @@ public class CheckListActivity extends AppCompatActivity {
     private int points;
 
     SharedPreferences userData;
+    private PreferenceManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +27,11 @@ public class CheckListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_check_list);
         TextView point = (TextView)findViewById(R.id.points);
 
+        manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+
         userData = getSharedPreferences("data", 0);
-        SharedPreferences.Editor editor = userData.edit();
-        points = userData.getInt("Points", 0);
+        points = manager.getListPoints();
         point.setText("Points: "+points);
 
         CheckBox checkBox1 = (CheckBox) findViewById(R.id.kit_1);
@@ -59,6 +62,7 @@ public class CheckListActivity extends AppCompatActivity {
     public void onCheckboxClicked(View view) {
         // Is the view now checked?
         SharedPreferences.Editor editor = userData.edit();
+
         boolean checked = ((CheckBox) view).isChecked();
         switch(view.getId()) {
             case R.id.kit_1:
@@ -144,7 +148,7 @@ public class CheckListActivity extends AppCompatActivity {
         }
         TextView point = (TextView)findViewById(R.id.points);
         point.setText("Points:"+points);
-        editor.putInt("Points",points);
         editor.commit();
+        manager.setListPoints(points);
     }
 }

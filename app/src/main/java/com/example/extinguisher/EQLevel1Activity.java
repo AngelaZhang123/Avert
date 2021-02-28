@@ -79,7 +79,7 @@ public class EQLevel1Activity extends AppCompatActivity {
                 if(mCurrIndex == mAnswerArr.length) {
                     PreferenceManager manager = PreferenceManager.getInstance();
                     manager.initialize(getApplicationContext());
-                    manager.setComplete(true, 1);
+                    manager.setComplete(true, 2);
                     Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
                     startActivity(intent);
                 }

@@ -15,6 +15,8 @@ public class HouseActivity extends AppCompatActivity {
     private int mCurrIndex = 0;
     private int choice = -1;
     private TextView mQuestionTextView;
+    private int lives;
+
     private int [][] mAnswerArr = new int [][] {
             {R.string.house1a, R.string.house1b, R.string.house1c},
             {R.string.house2a, R.string.house2b, R.string.house2c},
@@ -41,6 +43,7 @@ public class HouseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_house);
 
+        lives = 2;
         mQuestionTextView = (TextView) findViewById(R.id.question_text);
         mAButton = (Button) findViewById(R.id.housea_button);
         mBButton = (Button) findViewById(R.id.houseb_button);
@@ -79,7 +82,14 @@ public class HouseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length) {
+                if(mCurrIndex == mAnswerArr.length || lives == 0) {
+                    PreferenceManager manager = PreferenceManager.getInstance();
+                    manager.initialize(getApplicationContext());
+                    if(lives == 0) manager.setStars(1, 0);
+                    else {
+                        manager.setComplete(true, 1);
+                        manager.setStars(1, lives);
+                    }
                     Intent intent = new Intent(HouseActivity.this, GameOverActivity.class);
                     startActivity(intent);
                 }
@@ -104,6 +114,7 @@ public class HouseActivity extends AppCompatActivity {
             mCButton.setEnabled(false);
             mNextButton.setVisibility(View.VISIBLE);
         }
+        else lives--;
         int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(HouseActivity.this, text, Toast.LENGTH_LONG).show();
     }

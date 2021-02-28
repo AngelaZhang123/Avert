@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="profile">My Profile</string>
+    <string name="total_points">Total Points: </string>
+    <string name="total_levels">Levels Completed: </string>
+</resources>
