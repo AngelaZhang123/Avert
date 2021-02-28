@@ -5,16 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HouseActivity">
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
     <Button
         android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="84dp"
         android:text="Back"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -26,19 +47,25 @@
         android:layout_marginTop="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:textSize="18sp"
+        android:fontFamily="@font/leaguespartan"
+        android:textColor="@color/blue"
+        android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/housea_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+
+    <ImageButton
         android:id="@+id/next_button"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/campfireNext_button"
+        android:src="@drawable/arrow"
+        android:scaleType="fitCenter"
+        android:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -47,6 +74,10 @@
         android:id="@+id/housec_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:backgroundTint="@color/lightGrey"
+        android:fontFamily="@font/antic"
+        android:textAllCaps="false"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +87,10 @@
         android:id="@+id/houseb_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:backgroundTint="@color/lightGrey"
+        android:fontFamily="@font/antic"
+        android:textAllCaps="false"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/housec_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,6 +101,10 @@
         android:id="@+id/housea_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:backgroundTint="@color/lightGrey"
+        android:fontFamily="@font/antic"
+        android:textAllCaps="false"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/houseb_button"
         app:layout_constraintEnd_toEndOf="parent"

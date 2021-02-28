@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class EQLevel1Activity extends AppCompatActivity {
-    private Button backButton, choice1Button, choice2Button, choice3Button, nextButton;
+    private Button backButton, choice1Button, choice2Button, choice3Button;
+    private ImageButton nextButton;
     private TextView question, finish;
     private int mCurrIndex = 0;
     private int choice = -1;
@@ -44,7 +46,7 @@ public class EQLevel1Activity extends AppCompatActivity {
         choice1Button = (Button) findViewById(R.id.choice1);
         choice2Button = (Button) findViewById(R.id.choice2);
         choice3Button = (Button) findViewById(R.id.choice3);
-        nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
 

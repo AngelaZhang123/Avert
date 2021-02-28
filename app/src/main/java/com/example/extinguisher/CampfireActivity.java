@@ -7,12 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class CampfireActivity extends AppCompatActivity {
 
-    private Button mAButton, mBButton, mCButton, mNextButton, mBackButton;
+    private Button mAButton, mBButton, mCButton, mBackButton;
+    private ImageButton mNextButton;
     private int mCurrIndex = 0;
     private int choice = -1;
     private TextView mQuestionTextView;
@@ -50,7 +52,7 @@ public class CampfireActivity extends AppCompatActivity {
         mAButton = (Button) findViewById(R.id.campfirea_button);
         mBButton = (Button) findViewById(R.id.campfireb_button);
         mCButton = (Button) findViewById(R.id.campfirec_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         updateQuestion();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
