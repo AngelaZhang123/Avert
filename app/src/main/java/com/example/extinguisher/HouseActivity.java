@@ -10,13 +10,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class HouseActivity extends AppCompatActivity {
 
     private Button mAButton, mBButton, mCButton, mBackButton;
     private ImageButton mNextButton;
     private int mCurrIndex = 0;
     private int choice = -1;
-    private TextView mQuestionTextView;
+    private TextView mQuestionTextView, mLivesText;
     private int lives;
 
     private int [][] mAnswerArr = new int [][] {
@@ -31,7 +33,7 @@ public class HouseActivity extends AppCompatActivity {
             {R.string.house_toast2a, R.string.house_toast2b, R.string.house_toast2c},
             {R.string.house_toast3a, R.string.house_toast3b, R.string.house_toast3c},
             {R.string.house_toast4a, R.string.house_toast4b, R.string.house_toast4c},
-            {R.string.house_toast5a, R.string.house_toast4a, R.string.house_toast5c}
+            {R.string.house_toast5a, R.string.house_toast5b, R.string.house_toast5c}
     };
     private Question [] mQuestionArr = new Question [] {
             new Question(R.string.h1_text, 1),
@@ -51,6 +53,7 @@ public class HouseActivity extends AppCompatActivity {
         mBButton = (Button) findViewById(R.id.houseb_button);
         mCButton = (Button) findViewById(R.id.housec_button);
         mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mLivesText = (TextView) findViewById(R.id.h_lives_text);
         updateQuestion();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
@@ -84,17 +87,7 @@ public class HouseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length || lives == 0) {
-                    PreferenceManager manager = PreferenceManager.getInstance();
-                    manager.initialize(getApplicationContext());
-                    if(lives == 0) manager.setStars(1, 0);
-                    else {
-                        manager.setComplete(true, 1);
-                        manager.setStars(1, lives);
-                    }
-                    Intent intent = new Intent(HouseActivity.this, GameOverActivity.class);
-                    startActivity(intent);
-                }
+                if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
             }
         });
@@ -117,8 +110,9 @@ public class HouseActivity extends AppCompatActivity {
             mNextButton.setVisibility(View.VISIBLE);
         }
         else lives--;
+        updateLives();
         int text = mToastArr[mCurrIndex][choice];
-        Toast.makeText(HouseActivity.this, text, Toast.LENGTH_LONG).show();
+        Toast.makeText(HouseActivity.this, text, Toast.LENGTH_SHORT).show();
     }
 
     private void updateQuestion() {
@@ -128,9 +122,22 @@ public class HouseActivity extends AppCompatActivity {
         mCButton.setEnabled(true);
         int text = mQuestionArr[mCurrIndex].getQuestionTextID();
         mQuestionTextView.setText(text);
-
         mAButton.setText(mAnswerArr[mCurrIndex][0]);
         mBButton.setText(mAnswerArr[mCurrIndex][1]);
         mCButton.setText(mAnswerArr[mCurrIndex][2]);
+        updateLives();
+    }
+
+    private void updateLives() {
+        mLivesText.setText("Lives left: " + lives);
+        if(lives == 0) gameOver();
+    }
+
+    private void gameOver() {
+        PreferenceManager manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        if(lives > 0) manager.setComplete(true, 1, lives);
+        Intent intent = new Intent(HouseActivity.this, GameOverActivity.class);
+        startActivity(intent);
     }
 }

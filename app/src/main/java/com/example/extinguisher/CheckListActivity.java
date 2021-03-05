@@ -67,81 +67,81 @@ public class CheckListActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.kit_1:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked1", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked1",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked1", false);
                 }
                 break;
             case R.id.kit_2:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked2", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked2",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked2", false);
                 }
                 break;
             case R.id.kit_3:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked3", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked3",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked3", false);
                 }
                 break;
             case R.id.kit_4:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked4", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked4",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked4", false);
                 }
                 break;
             case R.id.kit_5:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked5", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked5",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked5", false);
                 }
                 break;
             case R.id.kit_6:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked6", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked6",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked6", false);
                 }
                 break;
             case R.id.kit_7:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked7", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked7",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked7", false);
                 }
                 break;
             case R.id.kit_8:
                 if (checked) {
-                    points++;
+                    points+=2;
                     editor.putBoolean("checked8", true);
                     Toast.makeText(getApplicationContext(), "Good work!", Toast.LENGTH_SHORT).show();
                 } else if (userData.getBoolean("checked8",false)) {
-                    points--;
+                    points-=2;
                     editor.putBoolean("checked8", false);
                 }
                 break;

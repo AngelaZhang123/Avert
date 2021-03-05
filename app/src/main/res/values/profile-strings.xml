@@ -3,4 +3,5 @@
     <string name="profile">My Profile</string>
     <string name="total_points">Total Points: </string>
     <string name="total_levels">Levels Completed: </string>
+    <string name="stars">Stars: </string>
 </resources>

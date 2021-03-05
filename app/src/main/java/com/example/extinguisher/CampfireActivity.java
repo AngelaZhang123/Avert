@@ -3,7 +3,6 @@ package com.example.extinguisher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ public class CampfireActivity extends AppCompatActivity {
     private ImageButton mNextButton;
     private int mCurrIndex = 0;
     private int choice = -1;
-    private TextView mQuestionTextView;
+    private TextView mQuestionTextView, mLivesText;
     private int lives;
 
     private int [][] mAnswerArr = new int [][] {
@@ -53,6 +52,7 @@ public class CampfireActivity extends AppCompatActivity {
         mBButton = (Button) findViewById(R.id.campfireb_button);
         mCButton = (Button) findViewById(R.id.campfirec_button);
         mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mLivesText = (TextView)findViewById(R.id.cf_lives_text);
         updateQuestion();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
@@ -86,17 +86,7 @@ public class CampfireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length || lives == 0) {
-                    PreferenceManager manager = PreferenceManager.getInstance();
-                    manager.initialize(getApplicationContext());
-                    if(lives == 0) manager.setStars(0, 0);
-                    else {
-                        manager.setComplete(true, 0);
-                        manager.setStars(0, lives);
-                    }
-                    Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
-                    startActivity(intent);
-                }
+                if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
             }
         });
@@ -120,7 +110,8 @@ public class CampfireActivity extends AppCompatActivity {
         }
         else lives--;
         int text = mToastArr[mCurrIndex][choice];
-        Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_LONG).show();
+        Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_SHORT).show();
+        updateLives();
     }
 
     private void updateQuestion() {
@@ -130,9 +121,22 @@ public class CampfireActivity extends AppCompatActivity {
         mCButton.setEnabled(true);
         int text = mQuestions[mCurrIndex].getQuestionTextID();
         mQuestionTextView.setText(text);
-
         mAButton.setText(mAnswerArr[mCurrIndex][0]);
         mBButton.setText(mAnswerArr[mCurrIndex][1]);
         mCButton.setText(mAnswerArr[mCurrIndex][2]);
+        updateLives();
+    }
+
+    private void updateLives() {
+        mLivesText.setText("Lives left: " + lives);
+        if(lives == 0) gameOver();
+    }
+
+    private void gameOver() {
+        PreferenceManager manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        if(lives > 0) manager.setComplete(true, 0, lives);
+        Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
+        startActivity(intent);
     }
 }

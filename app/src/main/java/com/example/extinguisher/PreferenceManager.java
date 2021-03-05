@@ -49,12 +49,13 @@ public class PreferenceManager {
         return self;
     }
 
-    public void setComplete(boolean c, int i) {
-        if(completeList[i] != c) {
-            completeList[i] = c;
-            if (c) points += 5;
-            savePreferences();
+    public void setComplete(boolean c, int i, int s) {
+        completeList[i] = c;
+        for(int a = starsArr[i]; a < s; a++) {
+            starsArr[i]++;
+            points += 5;
         }
+        savePreferences();
     }
 
     public void setListPoints(int p) {
@@ -80,11 +81,6 @@ public class PreferenceManager {
             if(completeList[i]) count++;
         }
         return count;
-    }
-
-    public void setStars(int i, int s) {
-        starsArr[i] = s;
-        savePreferences();
     }
 
     public int getStars(int i) {

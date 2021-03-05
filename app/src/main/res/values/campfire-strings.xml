@@ -27,7 +27,7 @@
     <string name="campfire4a">try to blow out the fire with all your might</string>
     <string name="campfire4b">just leave it there, it will eventually go out on its own</string>
     <string name="campfire4c">pour lots of water on the fire</string>
-    <string name="campfire5a">You/ve poured your entire bucket of water on the fire.</string>
+    <string name="campfire5a">You\'ve poured your entire bucket of water on the fire.</string>
     <string name="campfire5b">The leftover coal and ash is cold to the touch, and you don\'t see any more embers.</string>
     <string name="campfire5c">There are still a few embers exposed, but they\'ll all go out eventually.</string>
 

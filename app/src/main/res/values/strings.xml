@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Extinguisher</string>
+    <string name="app_name">Avert</string>
     <string name="menu_button"> Main Menu </string>
     <string name="checklist_button">Checklist</string>
     <string name="info_button">Information</string>

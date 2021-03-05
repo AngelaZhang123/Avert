@@ -14,9 +14,10 @@ import android.widget.Toast;
 public class EQLevel1Activity extends AppCompatActivity {
     private Button backButton, choice1Button, choice2Button, choice3Button;
     private ImageButton nextButton;
-    private TextView question, finish;
+    private TextView question, livesText;
     private int mCurrIndex = 0;
     private int choice = -1;
+    private int lives;
 
     private int [][] mAnswerArr = new int [][] {
             {R.string.EQ11a_button, R.string.EQ11b_button, R.string.EQ11c_button},
@@ -40,13 +41,15 @@ public class EQLevel1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_e_q_level2);
+        setContentView(R.layout.activity_e_q_level1);
 
+        lives = 2;
         question = (TextView) findViewById(R.id.question);
         choice1Button = (Button) findViewById(R.id.choice1);
         choice2Button = (Button) findViewById(R.id.choice2);
         choice3Button = (Button) findViewById(R.id.choice3);
         nextButton = (ImageButton) findViewById(R.id.nextButton);
+        livesText = (TextView) findViewById(R.id.eq1_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
 
@@ -78,13 +81,7 @@ public class EQLevel1Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length) {
-                    PreferenceManager manager = PreferenceManager.getInstance();
-                    manager.initialize(getApplicationContext());
-                    manager.setComplete(true, 2);
-                    Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
-                    startActivity(intent);
-                }
+                if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
             }
         });
@@ -104,6 +101,8 @@ public class EQLevel1Activity extends AppCompatActivity {
             choice2Button.setEnabled(false);
             choice3Button.setEnabled(false);
         }
+        else lives--;
+        updateLives();
         int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(EQLevel1Activity.this, text, Toast.LENGTH_SHORT).show();
     }
@@ -119,5 +118,19 @@ public class EQLevel1Activity extends AppCompatActivity {
         choice1Button.setText(mAnswerArr[mCurrIndex][0]);
         choice2Button.setText(mAnswerArr[mCurrIndex][1]);
         choice3Button.setText(mAnswerArr[mCurrIndex][2]);
+        updateLives();
+    }
+
+    private void updateLives() {
+        livesText.setText("Lives left: " + lives);
+        if(lives == 0) gameOver();
+    }
+
+    private void gameOver() {
+        PreferenceManager manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        if (lives > 0) manager.setComplete(true, 2, lives);
+        Intent intent = new Intent(EQLevel1Activity.this, GameOverActivity.class);
+        startActivity(intent);
     }
 }
