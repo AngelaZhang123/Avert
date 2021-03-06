@@ -3,11 +3,13 @@ package com.example.extinguisher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,10 @@ public class EQLevel1Activity extends AppCompatActivity {
             new Question(R.string.EQ14_text, 2)
     };
 
+    private int[] initialImages = new int[] {
+            R.drawable.man, R.drawable.duck, R.drawable.duck, R.drawable.home
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +58,7 @@ public class EQLevel1Activity extends AppCompatActivity {
         livesText = (TextView) findViewById(R.id.eq1_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
+        updatePicture();
 
         choice1Button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -119,6 +126,12 @@ public class EQLevel1Activity extends AppCompatActivity {
         choice2Button.setText(mAnswerArr[mCurrIndex][1]);
         choice3Button.setText(mAnswerArr[mCurrIndex][2]);
         updateLives();
+        updatePicture();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.eq1_image);
+        img.setImageResource(initialImages[mCurrIndex]);
     }
 
     private void updateLives() {
