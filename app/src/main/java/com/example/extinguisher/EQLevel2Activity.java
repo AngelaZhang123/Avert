@@ -6,16 +6,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class EQLevel2Activity extends AppCompatActivity {
 
-    private Button backButton, choice1Button, choice2Button, choice3Button, nextButton;
-    private TextView question, finish;
+    private Button backButton, choice1Button, choice2Button, choice3Button;
+    private ImageButton nextButton;
+    private TextView question, mLivesText;
     private int mCurrIndex = 0;
     private int choice = -1;
-
+    private int lives;
 
     private int [][] mAnswerArr = new int [][] {
             {R.string.EQ21a_button, R.string.EQ21b_button, R.string.EQ21c_button},
@@ -32,19 +35,25 @@ public class EQLevel2Activity extends AppCompatActivity {
             new Question(R.string.EQ22_text, 3),
             new Question(R.string.EQ23_text, 3)
     };
+    private int[] initialImages = new int[] {
+            R.drawable.openarea, R.drawable.duck, R.drawable.man
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_e_q_level2);
 
+        lives = 2;
         question = (TextView) findViewById(R.id.question);
         choice1Button = (Button) findViewById(R.id.choice1);
         choice2Button = (Button) findViewById(R.id.choice2);
         choice3Button = (Button) findViewById(R.id.choice3);
-        nextButton = (Button) findViewById(R.id.nextButton);
+        nextButton = (ImageButton) findViewById(R.id.nextButton);
+        mLivesText = (TextView) findViewById(R.id.eq2_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
+        updatePicture();
 
         choice1Button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,10 +83,7 @@ public class EQLevel2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length) {
-                    Intent intent = new Intent(EQLevel2Activity.this, GameOverActivity.class);
-                    startActivity(intent);
-                }
+                if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
             }
         });
@@ -97,6 +103,8 @@ public class EQLevel2Activity extends AppCompatActivity {
             choice2Button.setEnabled(false);
             choice3Button.setEnabled(false);
         }
+        else lives--;
+        updateLives();
         int text = mToastArr[mCurrIndex][choice];
         Toast.makeText(EQLevel2Activity.this, text, Toast.LENGTH_SHORT).show();
     }
@@ -112,5 +120,25 @@ public class EQLevel2Activity extends AppCompatActivity {
         choice1Button.setText(mAnswerArr[mCurrIndex][0]);
         choice2Button.setText(mAnswerArr[mCurrIndex][1]);
         choice3Button.setText(mAnswerArr[mCurrIndex][2]);
+        updateLives();
+        updatePicture();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.eq2_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updateLives() {
+        mLivesText.setText("Lives left: " + lives);
+        if(lives == 0) gameOver();
+    }
+
+    private void gameOver() {
+        PreferenceManager manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        if(lives > 0) manager.setComplete(true, 3, lives);
+        Intent intent = new Intent(EQLevel2Activity.this, GameOverActivity.class);
+        startActivity(intent);
     }
 }

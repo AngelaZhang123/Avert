@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Extinguisher</string>
-    <string name="menu_button">Main Menu</string>
+    <string name="app_name">Avert</string>
+    <string name="menu_button"> Main Menu </string>
     <string name="checklist_button">Checklist</string>
     <string name="info_button">Information</string>
     <string name="simulation_button">Simulations</string>
     <string name="profile_button">My profile</string>
-    <string name="wildfire_button">Wildfire Simulations</string>
-    <string name="earthquake_button">Earthquake Simulations</string>
-    <string name="campfire_button">Level 1: Campfire Safety</string>
+    <string name="wildfire_button">Wildfires</string>
+    <string name="earthquake_button">Earthquakes</string>
+    <string name="campfire_button">Campfire Safety</string>
 
     <string name="campfireNext_button">next</string>
     <string name="game_over_text">Game Over!</string>

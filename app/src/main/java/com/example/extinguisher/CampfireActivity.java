@@ -6,15 +6,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class CampfireActivity extends AppCompatActivity {
 
-    private Button mAButton, mBButton, mCButton, mNextButton, mBackButton;
+    private Button mAButton, mBButton, mCButton, mBackButton;
+    private ImageButton mNextButton;
     private int mCurrIndex = 0;
     private int choice = -1;
-    private TextView mQuestionTextView;
+    private TextView mQuestionTextView, mLivesText;
+    private int lives;
+
     private int [][] mAnswerArr = new int [][] {
             {R.string.campfire1a, R.string.campfire1b, R.string.campfire1c},
             {R.string.campfire2a, R.string.campfire2b, R.string.campfire2c},
@@ -29,7 +34,6 @@ public class CampfireActivity extends AppCompatActivity {
             {R.string.cf_toast4a, R.string.cf_toast4b, R.string.cf_toast4c},
             {R.string.cf_toast5a, R.string.cf_toast5b, R.string.cf_toast5c}
     };
-
     private Question [] mQuestions = new Question [] {
             new Question(R.string.campfire1_text, 1),
             new Question(R.string.campfire2_text, 0),
@@ -38,17 +42,24 @@ public class CampfireActivity extends AppCompatActivity {
             new Question(R.string.campfire5_text, 1)
     };
 
+    private int[] initialImages = new int[] {
+            R.drawable.campfiretwo, R.drawable.restroom, R.drawable.marshmallow_fire, R.drawable.campfiretwo, R.drawable.embers
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campfire);
 
+        lives = 2;
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         mAButton = (Button) findViewById(R.id.campfirea_button);
         mBButton = (Button) findViewById(R.id.campfireb_button);
         mCButton = (Button) findViewById(R.id.campfirec_button);
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
+        mLivesText = (TextView)findViewById(R.id.cf_lives_text);
         updateQuestion();
+        updatePicture();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -81,10 +92,7 @@ public class CampfireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mCurrIndex++;
-                if(mCurrIndex == mAnswerArr.length) {
-                    Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
-                    startActivity(intent);
-                }
+                if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
             }
         });
@@ -106,8 +114,10 @@ public class CampfireActivity extends AppCompatActivity {
             mCButton.setEnabled(false);
             mNextButton.setVisibility(View.VISIBLE);
         }
+        else lives--;
         int text = mToastArr[mCurrIndex][choice];
-        Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_LONG).show();
+        Toast.makeText(CampfireActivity.this, text, Toast.LENGTH_SHORT).show();
+        updateLives();
     }
 
     private void updateQuestion() {
@@ -117,9 +127,28 @@ public class CampfireActivity extends AppCompatActivity {
         mCButton.setEnabled(true);
         int text = mQuestions[mCurrIndex].getQuestionTextID();
         mQuestionTextView.setText(text);
-
         mAButton.setText(mAnswerArr[mCurrIndex][0]);
         mBButton.setText(mAnswerArr[mCurrIndex][1]);
         mCButton.setText(mAnswerArr[mCurrIndex][2]);
+        updateLives();
+        updatePicture();
+    }
+
+    private void updateLives() {
+        mLivesText.setText("Lives left: " + lives);
+        if(lives == 0) gameOver();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.campfire_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void gameOver() {
+        PreferenceManager manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        if(lives > 0) manager.setComplete(true, 0, lives);
+        Intent intent = new Intent(CampfireActivity.this, GameOverActivity.class);
+        startActivity(intent);
     }
 }

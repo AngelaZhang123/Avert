@@ -5,7 +5,7 @@
         You see four possible locations to dig your fire pit. Which
         of the following locations do you choose?</string>
     <string name="campfire2_text">As you are sitting around the fire
-        with your five year old brother and parents, you need to go
+        with your five year old sister and parents, you need to go
         to the restroom. You go to the bathroom with:</string>
     <string name="campfire3_text">Your family starts to roast
         marshmallows, but your marshmallow catches on fire! What do
@@ -27,7 +27,7 @@
     <string name="campfire4a">try to blow out the fire with all your might</string>
     <string name="campfire4b">just leave it there, it will eventually go out on its own</string>
     <string name="campfire4c">pour lots of water on the fire</string>
-    <string name="campfire5a">You/ve poured your entire bucket of water on the fire.</string>
+    <string name="campfire5a">You\'ve poured your entire bucket of water on the fire.</string>
     <string name="campfire5b">The leftover coal and ash is cold to the touch, and you don\'t see any more embers.</string>
     <string name="campfire5c">There are still a few embers exposed, but they\'ll all go out eventually.</string>
 
