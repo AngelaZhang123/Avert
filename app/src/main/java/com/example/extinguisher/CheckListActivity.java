@@ -65,6 +65,7 @@ public class CheckListActivity extends AppCompatActivity {
         cashText = (TextView) findViewById(R.id.cashText);
         mImageView = (ImageView) findViewById(R.id.imageView);
         setInvisible(0);
+        /*
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +86,7 @@ public class CheckListActivity extends AppCompatActivity {
                     openCamera();
                 }
             }
-        });
+        });*/
 
         /*cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
