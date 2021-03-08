@@ -46,6 +46,10 @@ public class CampfireActivity extends AppCompatActivity {
             R.drawable.campfiretwo, R.drawable.restroom, R.drawable.marshmallow_fire, R.drawable.campfiretwo, R.drawable.embers
     };
 
+    private int[] finalImages = new int[] {
+            R.drawable.openarea, R.drawable.sister, R.drawable.marshmallow, R.drawable.bucket, R.drawable.outfire
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,6 +113,7 @@ public class CampfireActivity extends AppCompatActivity {
 
     private void setToastText() {
         if(choice == mQuestions[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             mAButton.setEnabled(false);
             mBButton.setEnabled(false);
             mCButton.setEnabled(false);
@@ -142,6 +147,11 @@ public class CampfireActivity extends AppCompatActivity {
     private void updatePicture() {
         ImageView img= (ImageView) findViewById(R.id.campfire_image);
         img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2() {
+        ImageView img= (ImageView) findViewById(R.id.campfire_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void gameOver() {
