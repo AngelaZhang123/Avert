@@ -29,14 +29,13 @@ import android.widget.Toast;
 public class CheckListActivity extends AppCompatActivity {
 
     private static final int PERMISSION_CODE = 1000;
-    int x;
     private static final int IMAGE_CAPTURE_CODE = 1001;
 
     private int points;
     private ImageView mImageView;
     private ImageButton foodButton, maskButton, medsButton, firstAidButton, flashlightButton, radioButton, docsButton, cashButton, cameraButton;
     private TextView foodText, maskText, medsText, firstAidText, flashlightText, radioText, docsText, cashText;
-    //private ConstraintLayout cLayout;
+    private ConstraintLayout cLayout;
 
     Uri image_uri;
     SharedPreferences userData;
@@ -46,7 +45,7 @@ public class CheckListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
 
-        //cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
+        cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         maskButton = (ImageButton) findViewById(R.id.maskButton);
         foodButton = (ImageButton) findViewById(R.id.foodButton);
         firstAidButton = (ImageButton) findViewById(R.id.firstAidButton);
@@ -66,7 +65,7 @@ public class CheckListActivity extends AppCompatActivity {
         cashText = (TextView) findViewById(R.id.cashText);
         mImageView = (ImageView) findViewById(R.id.imageView);
         setInvisible(0);
-        /*
+
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,14 +86,14 @@ public class CheckListActivity extends AppCompatActivity {
                     openCamera();
                 }
             }
-        });*/
+        });
 
-        /*cLayout.setOnClickListener(new View.OnClickListener() {
+        cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     setInvisible(0);
             }
-        });*/
+        });
 
         maskButton.setOnClickListener(new View.OnClickListener() {
             @Override
