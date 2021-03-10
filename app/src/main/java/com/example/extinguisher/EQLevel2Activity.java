@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,13 @@ public class EQLevel2Activity extends AppCompatActivity {
             new Question(R.string.EQ22_text, 3),
             new Question(R.string.EQ23_text, 3)
     };
+    private int[] initialImages = new int[] {
+            R.drawable.earthquake, R.drawable.man, R.drawable.duck
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.openarea, R.drawable.duck, R.drawable.man
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +57,7 @@ public class EQLevel2Activity extends AppCompatActivity {
         mLivesText = (TextView) findViewById(R.id.eq2_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
+        updatePicture();
 
         choice1Button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -92,6 +101,7 @@ public class EQLevel2Activity extends AppCompatActivity {
         else
             choice3Button.setEnabled(false);
         if(num ==mQuestionArr[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             nextButton.setEnabled(true);
             nextButton.setVisibility(View.VISIBLE);
             choice1Button.setEnabled(false);
@@ -116,6 +126,17 @@ public class EQLevel2Activity extends AppCompatActivity {
         choice2Button.setText(mAnswerArr[mCurrIndex][1]);
         choice3Button.setText(mAnswerArr[mCurrIndex][2]);
         updateLives();
+        updatePicture();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.eq2_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2() {
+        ImageView img= (ImageView) findViewById(R.id.eq2_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void updateLives() {

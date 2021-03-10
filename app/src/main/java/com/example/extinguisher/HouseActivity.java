@@ -3,10 +3,13 @@ package com.example.extinguisher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,6 +45,15 @@ public class HouseActivity extends AppCompatActivity {
             new Question(R.string.h4_text, 0),
             new Question(R.string.h5_text, 1)
     };
+
+    private int[] initialImages = new int[] {
+            R.drawable.firehouse, R.drawable.man, R.drawable.smokeman, R.drawable.clothes_fire, R.drawable.firehouse
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.run, R.drawable.window, R.drawable.crouch, R.drawable.roll, R.drawable.family
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +67,7 @@ public class HouseActivity extends AppCompatActivity {
         mNextButton = (ImageButton) findViewById(R.id.next_button);
         mLivesText = (TextView) findViewById(R.id.h_lives_text);
         updateQuestion();
+        updatePicture();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -104,6 +117,7 @@ public class HouseActivity extends AppCompatActivity {
 
     private void setToastText() {
         if(choice == mQuestionArr[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             mAButton.setEnabled(false);
             mBButton.setEnabled(false);
             mCButton.setEnabled(false);
@@ -117,6 +131,7 @@ public class HouseActivity extends AppCompatActivity {
 
     private void updateQuestion() {
         mNextButton.setVisibility(View.INVISIBLE);
+        //updatePicture();
         mAButton.setEnabled(true);
         mBButton.setEnabled(true);
         mCButton.setEnabled(true);
@@ -126,11 +141,22 @@ public class HouseActivity extends AppCompatActivity {
         mBButton.setText(mAnswerArr[mCurrIndex][1]);
         mCButton.setText(mAnswerArr[mCurrIndex][2]);
         updateLives();
+        updatePicture();
     }
 
     private void updateLives() {
         mLivesText.setText("Lives left: " + lives);
         if(lives == 0) gameOver();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.house_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2() {
+        ImageView img= (ImageView) findViewById(R.id.house_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void gameOver() {

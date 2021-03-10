@@ -3,11 +3,13 @@ package com.example.extinguisher;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +40,14 @@ public class EQLevel1Activity extends AppCompatActivity {
             new Question(R.string.EQ14_text, 2)
     };
 
+    private int[] initialImages = new int[] {
+            R.drawable.man, R.drawable.crouch, R.drawable.duck, R.drawable.home
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.table, R.drawable.duck, R.drawable.duck, R.drawable.exit
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +62,7 @@ public class EQLevel1Activity extends AppCompatActivity {
         livesText = (TextView) findViewById(R.id.eq1_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
         updateQuestion();
+        updatePicture();
 
         choice1Button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -95,6 +106,7 @@ public class EQLevel1Activity extends AppCompatActivity {
         else
             choice3Button.setEnabled(false);
         if(num ==mQuestionArr[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             nextButton.setEnabled(true);
             nextButton.setVisibility(View.VISIBLE);
             choice1Button.setEnabled(false);
@@ -119,6 +131,17 @@ public class EQLevel1Activity extends AppCompatActivity {
         choice2Button.setText(mAnswerArr[mCurrIndex][1]);
         choice3Button.setText(mAnswerArr[mCurrIndex][2]);
         updateLives();
+        updatePicture();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.eq1_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2 (){
+        ImageView img= (ImageView) findViewById(R.id.eq1_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void updateLives() {

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,14 @@ public class CampfireActivity extends AppCompatActivity {
             new Question(R.string.campfire5_text, 1)
     };
 
+    private int[] initialImages = new int[] {
+            R.drawable.campfiretwo, R.drawable.restroom, R.drawable.marshmallow_fire, R.drawable.campfiretwo, R.drawable.embers
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.openarea, R.drawable.sister, R.drawable.marshmallow, R.drawable.bucket, R.drawable.outfire
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +63,7 @@ public class CampfireActivity extends AppCompatActivity {
         mNextButton = (ImageButton) findViewById(R.id.next_button);
         mLivesText = (TextView)findViewById(R.id.cf_lives_text);
         updateQuestion();
+        updatePicture();
 
         mAButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -103,6 +113,7 @@ public class CampfireActivity extends AppCompatActivity {
 
     private void setToastText() {
         if(choice == mQuestions[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             mAButton.setEnabled(false);
             mBButton.setEnabled(false);
             mCButton.setEnabled(false);
@@ -125,11 +136,22 @@ public class CampfireActivity extends AppCompatActivity {
         mBButton.setText(mAnswerArr[mCurrIndex][1]);
         mCButton.setText(mAnswerArr[mCurrIndex][2]);
         updateLives();
+        updatePicture();
     }
 
     private void updateLives() {
         mLivesText.setText("Lives left: " + lives);
         if(lives == 0) gameOver();
+    }
+
+    private void updatePicture() {
+        ImageView img= (ImageView) findViewById(R.id.campfire_image);
+        img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2() {
+        ImageView img= (ImageView) findViewById(R.id.campfire_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void gameOver() {
