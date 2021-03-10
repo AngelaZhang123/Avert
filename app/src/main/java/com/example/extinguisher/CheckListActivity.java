@@ -35,7 +35,7 @@ public class CheckListActivity extends AppCompatActivity {
     private ImageView mImageView;
     private ImageButton foodButton, maskButton, medsButton, firstAidButton, flashlightButton, radioButton, docsButton, cashButton, cameraButton;
     private TextView foodText, maskText, medsText, firstAidText, flashlightText, radioText, docsText, cashText;
-    //private ConstraintLayout cLayout;
+    private ConstraintLayout cLayout;
 
     Uri image_uri;
     SharedPreferences userData;
@@ -45,7 +45,7 @@ public class CheckListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
 
-        //cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
+        cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         maskButton = (ImageButton) findViewById(R.id.maskButton);
         foodButton = (ImageButton) findViewById(R.id.foodButton);
         firstAidButton = (ImageButton) findViewById(R.id.firstAidButton);
@@ -65,6 +65,7 @@ public class CheckListActivity extends AppCompatActivity {
         cashText = (TextView) findViewById(R.id.cashText);
         mImageView = (ImageView) findViewById(R.id.imageView);
         setInvisible(0);
+
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,29 +88,29 @@ public class CheckListActivity extends AppCompatActivity {
             }
         });
 
-        /*cLayout.setOnClickListener(new View.OnClickListener() {
+        cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     setInvisible(0);
             }
-        });*/
+        });
 
         maskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setInvisible(2);
+                    setInvisible(2);
             }
         });
         foodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setInvisible(1);
+                    setInvisible(1);
             }
         });
         medsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setInvisible(3);
+                    setInvisible(3);
             }
         });
         firstAidButton.setOnClickListener(new View.OnClickListener() {
@@ -142,6 +143,7 @@ public class CheckListActivity extends AppCompatActivity {
                 setInvisible(8);
             }
         });
+
     }
 
     private void openCamera() {
@@ -159,7 +161,7 @@ public class CheckListActivity extends AppCompatActivity {
         switch(requestCode){
             case PERMISSION_CODE:{
                 if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    openCamera();
+                        openCamera();
                 }
                 else{
                     String text = "Permission denied...";
@@ -205,3 +207,4 @@ public class CheckListActivity extends AppCompatActivity {
             cashText.setVisibility(View.VISIBLE);
     }
 }
+

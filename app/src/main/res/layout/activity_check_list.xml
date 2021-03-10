@@ -1,304 +1,299 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:gravity="start"
+    android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="start"
-        android:orientation="vertical">
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="360dp"
+        android:layout_marginRight="360dp"
+        android:text="@string/points"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="360dp"
-            android:layout_marginRight="360dp"
-            android:text="@string/points"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="22dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/cameraButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="22dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:layout_constraintEnd_toStartOf="@+id/cameraButton"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/foodButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="50dp"
+        android:maxHeight="50dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/food_water" />
 
-        <ImageButton
-            android:id="@+id/foodButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="50dp"
-            android:maxHeight="50dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/food_water" />
+    <ImageButton
+        android:id="@+id/maskButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="150dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/face_mask" />
 
-        <ImageButton
-            android:id="@+id/maskButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="150dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/face_mask" />
+    <TextView
+        android:id="@+id/maskText"
+        android:layout_width="160dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="Item 1: Masks"
+        android:elevation="0.1dp"
+        android:background="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maskButton" />
 
-        <TextView
-            android:id="@+id/maskText"
-            android:layout_width="160dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:text="Item 1: Masks"
-            android:elevation="0.1dp"
-            android:background="@color/yellow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/maskButton" />
+    <TextView
+        android:id="@+id/foodText"
+        android:layout_width="160dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@color/yellow"
+        android:elevation="0.1dp"
+        android:text="Item 2: Food and Water"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodButton" />
 
-        <TextView
-            android:id="@+id/foodText"
-            android:layout_width="160dp"
-            android:layout_height="34dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/yellow"
-            android:elevation="0.1dp"
-            android:text="Item 2: Food and Water"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodButton" />
+    <ImageButton
+        android:id="@+id/medsButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maskButton"
+        app:srcCompat="@drawable/medication" />
 
-        <ImageButton
-            android:id="@+id/medsButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/maskButton"
-            app:srcCompat="@drawable/medication" />
+    <TextView
+        android:id="@+id/medsText"
+        android:layout_width="160dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:elevation="0.1dp"
+        android:text="Item 3: Medicine"
+        android:background="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medsButton" />
 
-        <TextView
-            android:id="@+id/medsText"
-            android:layout_width="160dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:elevation="0.1dp"
-            android:text="Item 3: Medicine"
-            android:background="@color/yellow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medsButton" />
+    <ImageButton
+        android:id="@+id/firstAidButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodButton"
+        app:srcCompat="@drawable/first_aid" />
 
-        <ImageButton
-            android:id="@+id/firstAidButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/foodButton"
-            app:srcCompat="@drawable/first_aid" />
+    <ImageButton
+        android:id="@+id/flashlightButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/medsButton"
+        app:srcCompat="@drawable/flashlight" />
 
-        <ImageButton
-            android:id="@+id/flashlightButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/medsButton"
-            app:srcCompat="@drawable/flashlight" />
+    <ImageButton
+        android:id="@+id/radioButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstAidButton"
+        app:srcCompat="@drawable/radio" />
 
-        <ImageButton
-            android:id="@+id/radioButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstAidButton"
-            app:srcCompat="@drawable/radio" />
+    <ImageButton
+        android:id="@+id/docsButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flashlightButton"
+        app:srcCompat="@drawable/imp_docs" />
 
-        <ImageButton
-            android:id="@+id/docsButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flashlightButton"
-            app:srcCompat="@drawable/imp_docs" />
+    <ImageButton
+        android:id="@+id/cashButton"
+        android:layout_width="160dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton"
+        app:srcCompat="@drawable/cash" />
 
-        <ImageButton
-            android:id="@+id/cashButton"
-            android:layout_width="160dp"
-            android:layout_height="130dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton"
-            app:srcCompat="@drawable/cash" />
+    <TextView
+        android:id="@+id/firstAidText"
+        android:layout_width="160dp"
+        android:background="@color/yellow"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:elevation="0.1dp"
+        android:text="Item 4: First Aid Kit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/firstAidButton" />
 
-        <TextView
-            android:id="@+id/firstAidText"
-            android:layout_width="160dp"
-            android:background="@color/yellow"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:elevation="0.1dp"
-            android:text="Item 4: First Aid Kit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/firstAidButton" />
+    <TextView
+        android:id="@+id/flashlightText"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:elevation="0.1dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/yellow"
+        android:text="Item 5: Flashlight"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/flashlightButton" />
 
-        <TextView
-            android:id="@+id/flashlightText"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:elevation="0.1dp"
-            android:layout_marginLeft="20dp"
-            android:background="@color/yellow"
-            android:text="Item 5: Flashlight"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/flashlightButton" />
+    <TextView
+        android:id="@+id/radioText"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:elevation="0.1dp"
+        android:text="Item 6: Radio and Batteries"
+        android:background="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
-        <TextView
-            android:id="@+id/radioText"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:elevation="0.1dp"
-            android:text="Item 6: Radio and Batteries"
-            android:background="@color/yellow"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+    <TextView
+        android:id="@+id/docsText"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/yellow"
+        android:text="Item 7: Important Documents"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/docsButton" />
 
-        <TextView
-            android:id="@+id/docsText"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@color/yellow"
-            android:text="Item 7: Important Documents"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/docsButton" />
+    <TextView
+        android:id="@+id/cashText"
+        android:layout_width="160dp"
+        android:background="@color/yellow"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:elevation="0.1dp"
+        android:layout_marginRight="20dp"
+        android:text="Item 8: Cash"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cashButton" />
 
-        <TextView
-            android:id="@+id/cashText"
-            android:layout_width="160dp"
-            android:background="@color/yellow"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:elevation="0.1dp"
-            android:layout_marginRight="20dp"
-            android:text="Item 8: Cash"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cashButton" />
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="52dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:adjustViewBounds="true"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        android:elevation="0.1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/camera" />
 
-        <ImageButton
-            android:id="@+id/cameraButton"
-            android:layout_width="52dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:adjustViewBounds="true"
-            android:maxWidth="100dp"
-            android:maxHeight="100dp"
-            android:scaleType="fitXY"
-            android:elevation="0.1dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/camera" />
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
-        <View
-            android:id="@+id/myRectangleView"
-            android:layout_width="420dp"
-            android:layout_height="70dp"
-            android:background="@drawable/rectangle"
-            android:backgroundTint="@color/yellow"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:fontFamily="@font/archive"
-            android:text="AVERT"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="30sp"
-            app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:fontFamily="@font/archive"
+        android:text="Checklist"
+        android:textAllCaps="false"
+        android:textColor="#ff5757"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="85dp"
-            android:fontFamily="@font/archive"
-            android:text="Checklist"
-            android:textAllCaps="false"
-            android:textColor="#ff5757"
-            android:textSize="40sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
