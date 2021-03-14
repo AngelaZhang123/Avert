@@ -2,7 +2,7 @@
     <string name="app_name">Avert</string>
     <string name="menu_button"> Main Menu </string>
     <string name="checklist_button">Checklist</string>
-    <string name="info_button">Information</string>
+    <string name="info_button">Handbook</string>
     <string name="simulation_button">Simulations</string>
     <string name="profile_button">My profile</string>
     <string name="wildfire_button">Wildfires</string>
