@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HouseActivity"
-    android:background="@color/red"
     >
 
 
@@ -13,31 +12,44 @@
         android:id="@+id/menu_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/yellow"
+        android:fontFamily="@font/leaguespartan"
+        android:minWidth="150dp"
+
         android:text="@string/menu_button"
         android:textColor="@android:color/white"
-        android:background="@color/yellow"
-
-        android:fontFamily="@font/josefinsansreg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6"
-        android:minWidth="150dp"  />
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="196dp"
         android:fontFamily="@font/archive"
-        android:textColor="@android:color/white"
         android:text="AVERT"
-        android:textSize="50sp"
         android:textAllCaps="false"
+        android:textColor="@color/red"
+        android:textSize="50sp"
         app:layout_constraintBottom_toTopOf="@+id/menu_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintHorizontal_bias="0.8"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/menu_button"
+        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
