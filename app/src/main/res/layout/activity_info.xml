@@ -1,9 +1,335 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="@android:color/white"
     tools:context=".InfoActivity">
 
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="5dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/leaguespartan"
+        android:text="The Survivor's Handbook"
+        android:textAllCaps="true"
+        android:textColor="@color/red"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+
+    <ImageView
+        android:id="@+id/banner1"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="60dp"
+        android:backgroundTint="@color/yellow"
+        android:src="@drawable/banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/injury_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/leaguespartan"
+        android:text="I'm hurt- injuries guide"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:id="@+id/wound1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I have an open wound"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner1"
+        app:layout_constraintBottom_toTopOf="@id/wound_text1"/>
+
+    <TextView
+        android:id="@+id/wound_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/wound2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wound1" />
+
+
+    <Button
+        android:id="@+id/wound2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="My wound is infected"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wound_text1"
+        app:layout_constraintBottom_toTopOf="@id/wound_text2" />
+
+    <TextView
+        android:id="@+id/wound_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        android:text=""
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/wound3"
+        app:layout_constraintTop_toBottomOf="@+id/wound2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/wound3"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I sprained my ankle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wound_text2"
+        app:layout_constraintBottom_toTopOf="@id/wound_text3" />
+
+    <TextView
+        android:id="@+id/wound_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        android:text=""
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/wound4"
+        app:layout_constraintTop_toBottomOf="@+id/wound3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/wound4"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I hit my head"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wound_text3"
+        app:layout_constraintBottom_toTopOf="@id/wound_text4" />
+
+    <TextView
+        android:id="@+id/wound_text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        android:text=""
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/wound4"
+        app:layout_constraintBottom_toTopOf="@+id/wound5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/wound5"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="Someone's pulse stopped"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/wound_text5" />
+
+    <TextView
+        android:id="@+id/wound_text5"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/antic"
+        app:layout_constraintTop_toBottomOf="@+id/wound5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/banner2"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="60dp"
+        android:backgroundTint="@color/yellow"
+        android:src="@drawable/banner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wound_text5" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/leaguespartan"
+        android:text="What should I do if...?"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/banner2" />
+
+    <Button
+        android:id="@+id/whatif1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I'm trapped in an earthquake."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner2"
+        app:layout_constraintBottom_toTopOf="@id/whatif_text1"/>
+
+    <TextView
+        android:id="@+id/whatif_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:fontFamily="@font/antic"
+        app:layout_constraintTop_toBottomOf="@+id/whatif1"
+        app:layout_constraintBottom_toTopOf="@id/whatif2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/whatif2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I smell smoke and I'm close to a wildfire."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatif_text1"
+        app:layout_constraintBottom_toTopOf="@id/whatif_text2" />
+
+    <TextView
+        android:id="@+id/whatif_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:fontFamily="@font/antic"
+        app:layout_constraintTop_toBottomOf="@+id/whatif2"
+        app:layout_constraintBottom_toTopOf="@id/whatif3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/whatif3"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="I see a downed power line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatif_text2"
+        app:layout_constraintBottom_toTopOf="@id/whatif_text3" />
+
+    <TextView
+        android:id="@+id/whatif_text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:fontFamily="@font/antic"
+        app:layout_constraintTop_toBottomOf="@+id/whatif3"
+        app:layout_constraintBottom_toTopOf="@id/whatif4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/whatif4"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="The power is out"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatif_text3"
+        app:layout_constraintBottom_toTopOf="@id/whatif_text4" />
+
+    <TextView
+        android:id="@+id/whatif_text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:text=""
+        android:fontFamily="@font/antic"
+        app:layout_constraintTop_toBottomOf="@+id/whatif4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
