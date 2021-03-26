@@ -26,9 +26,7 @@ public class PreferenceManager {
     private static final int NUM_LEVELS = 4;
     private int points, listPoints, avatarIndex;
 
-    private PreferenceManager() {
-
-    }
+    private PreferenceManager() { }
 
     public void initialize(Context context) {
         if (!isInitialised) {

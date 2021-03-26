@@ -8,23 +8,34 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class CheckListActivity extends AppCompatActivity {
 
@@ -33,11 +44,34 @@ public class CheckListActivity extends AppCompatActivity {
 
     private int points;
     private ImageView mImageView;
-    private ImageButton foodButton, maskButton, medsButton, firstAidButton, flashlightButton, radioButton, docsButton, cashButton, cameraButton;
-    private TextView foodText, maskText, medsText, firstAidText, flashlightText, radioText, docsText, cashText;
+    private ImageButton cameraButton, backButton, infoButton;
+    private ImageButton [] imgBtnArr;
+    private TextView [] textArr;
+    private TextView infoText;
+    private ImageView [] checks;
+    private boolean [] checked;
+    private boolean showInfo;
     private ConstraintLayout cLayout;
+    private ImageClassifier imageClassifier;
+    private final String [][] POSSIBLE_LABELS = new String [][] {
+            {"gasmask", "mask", "ski mask", "handkerchief"},
+            {"French loaf", "bagel", "pretzel", "cheeseburger", "hotdog", "mashed potato",
+                    "head cabbage", "broccoli", "cauliflower", "zucchini", "spaghetti squash",
+                    "acorn squash", "butternut squash", "cucumber", "artichoke", "bell pepper",
+                    "mushroom", "Granny Smith", "strawberry", "orange", "lemon", "fig", "pineapple",
+                    "banana", "jackfruit", "custard apple", "pomegranate", "carbonara", "meat loaf",
+                    "pizza", "potpie", "burrito"},
+            {"pill bottle"}, {"Band Aid"}, {}, {"radio", "tape player", "cassette player", "CD player"},
+            {"document"}, {"money"}, {"hand sanitizer", "paper towel", "bath towel"},
+            {"water bottle", "water jug"}
+    };
+    private final String [] CHECKLIST_ITEMS = new String [] {
+            "masks", "food", "medicine", "first aid kit", "flashlight", "radio", "important documents",
+            "cash", "sanitation items", "water"
+    };
 
     Uri image_uri;
+    PreferenceManager manager;
     SharedPreferences userData;
 
     @Override
@@ -45,45 +79,82 @@ public class CheckListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
 
-        cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
-        maskButton = (ImageButton) findViewById(R.id.maskButton);
-        foodButton = (ImageButton) findViewById(R.id.foodButton);
-        firstAidButton = (ImageButton) findViewById(R.id.firstAidButton);
-        medsButton = (ImageButton) findViewById(R.id.medsButton);
-        flashlightButton = (ImageButton) findViewById(R.id.flashlightButton);
-        radioButton = (ImageButton) findViewById(R.id.radioButton);
-        docsButton = (ImageButton) findViewById(R.id.docsButton);
-        cashButton = (ImageButton) findViewById(R.id.cashButton);
-        cameraButton = (ImageButton) findViewById(R.id.cameraButton);
-        foodText = (TextView) findViewById(R.id.foodText);
-        maskText = (TextView) findViewById(R.id.maskText);
-        medsText = (TextView) findViewById(R.id.medsText);
-        firstAidText = (TextView) findViewById(R.id.firstAidText);
-        flashlightText = (TextView) findViewById(R.id.flashlightText);
-        radioText = (TextView) findViewById(R.id.radioText);
-        docsText = (TextView) findViewById(R.id.docsText);
-        cashText = (TextView) findViewById(R.id.cashText);
-        mImageView = (ImageView) findViewById(R.id.imageView);
-        setInvisible(0);
+        manager = PreferenceManager.getInstance();
+        manager.initialize(getApplicationContext());
+        points = manager.getListPoints();
+        userData = this.getSharedPreferences("List Preferences", 0);
 
+        cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
+        cameraButton = (ImageButton) findViewById(R.id.cameraButton);
+        mImageView = (ImageView) findViewById(R.id.imageView);
+        backButton = (ImageButton) findViewById(R.id.home_button);
+        infoButton = (ImageButton) findViewById(R.id.about_button);
+
+        imgBtnArr = new ImageButton [] {
+                findViewById(R.id.maskButton), findViewById(R.id.foodButton), findViewById(R.id.firstAidButton),
+                findViewById(R.id.medsButton), findViewById(R.id.flashlightButton), findViewById(R.id.radioButton),
+                findViewById(R.id.docsButton), findViewById(R.id.cashButton), findViewById(R.id.sanitationButton),
+                findViewById(R.id.waterButton)
+        };
+
+        textArr = new TextView [] {
+                findViewById(R.id.maskText), findViewById(R.id.foodText), findViewById(R.id.firstAidText),
+                findViewById(R.id.medsText), findViewById(R.id.flashlightText),
+                findViewById(R.id.radioText), findViewById(R.id.docsText), findViewById(R.id.cashText),
+                findViewById(R.id.sanitationText), findViewById(R.id.waterText)
+        };
+
+        checks = new ImageView [] {
+                findViewById(R.id.check1), findViewById(R.id.check2), findViewById(R.id.check3),
+                findViewById(R.id.check4), findViewById(R.id.check5), findViewById(R.id.check6),
+                findViewById(R.id.check7), findViewById(R.id.check8), findViewById(R.id.check9),
+                findViewById(R.id.check10)
+        };
+
+        setInvisible(checks.length);
+
+        checked = new boolean [checks.length];
+        for(int i = 0; i < checked.length; i++) {
+            checked[i] = userData.getBoolean("checked" + i, false);
+        }
+
+        try {
+            imageClassifier = new ImageClassifier(this);
+        }
+        catch (IOException e) {
+            Log.e("Image Classifier Error", "ERROR: " + e);
+        }
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manager.setListPoints(points);
+                Intent intent = new Intent(CheckListActivity.this, MenuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         cameraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.CAMERA) ==
-                            PackageManager.PERMISSION_DENIED ||
-                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                                    PackageManager.PERMISSION_DENIED) {
-                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
-                        requestPermissions(permission, PERMISSION_CODE);
-                    }
-                    else {
-                        openCamera();
-                    }
+                cameraClicked();
+            }
+        });
+
+        showInfo = true;
+        infoText = (TextView) findViewById(R.id.info_text);
+        infoText.setVisibility(View.GONE);
+        infoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(showInfo) {
+                    infoText.setVisibility(View.VISIBLE);
+                    infoText.setText(R.string.checklist_info_text);
+                    showInfo = false;
                 }
                 else {
-                    openCamera();
+                    infoText.setVisibility(View.GONE);
+                    showInfo = true;
                 }
             }
         });
@@ -91,59 +162,90 @@ public class CheckListActivity extends AppCompatActivity {
         cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    setInvisible(0);
+                    setInvisible(8);
             }
         });
 
-        maskButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    setInvisible(2);
-            }
-        });
-        foodButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    setInvisible(1);
-            }
-        });
-        medsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    setInvisible(3);
-            }
-        });
-        firstAidButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setInvisible(4);
-            }
-        });
-        flashlightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setInvisible(5);
-            }
-        });
-        radioButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setInvisible(6);
-            }
-        });
-        docsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setInvisible(7);
-            }
-        });
-        cashButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setInvisible(8);
-            }
-        });
+        for(int i = 0; i < imgBtnArr.length; i++) {
+            final int x = i;
+            imgBtnArr[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setInvisible(x);
+                }
+            });
+        }
 
+        Intent intentIn = getIntent();
+        Bundle extras = intentIn.getExtras();
+        if(extras !=  null) {
+            if(extras.getString("object", null) != null) {
+                String object = extras.getString("object");
+                int item = checkCategory(object);
+                if (item != -1) {
+                    Toast.makeText(CheckListActivity.this,
+                            "Great job!", Toast.LENGTH_SHORT).show();
+                    points += 2;
+                }
+                else {
+                    Toast.makeText(CheckListActivity.this,
+                            "Sorry, that's not a kit item.", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else if(extras.getString("item", null) != null) {
+                String item = extras.getString("item");
+                for(int i = 0; i < CHECKLIST_ITEMS.length; i++) {
+                    if(item.equals(CHECKLIST_ITEMS[i])) {
+                        if(checked[i]) {
+                            Toast.makeText(CheckListActivity.this,
+                                    "You already have that item.", Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                        points += 2;
+                        checked[i] = true;
+                        break;
+                    }
+                }
+            }
+            else if(extras.getBoolean("open camera", false))
+                cameraClicked();
+        }
+        setCheckBoxes();
+    }
+
+    private void cameraClicked() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                    PackageManager.PERMISSION_DENIED ||
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                            PackageManager.PERMISSION_DENIED) {
+                String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                requestPermissions(permission, PERMISSION_CODE);
+            }
+            else {
+                openCamera();
+            }
+        }
+        else {
+            openCamera();
+        }
+    }
+
+    private int checkCategory(String object) {
+        for(int i = 0; i < POSSIBLE_LABELS.length; i++) {
+            for(int j = 0; j < POSSIBLE_LABELS[i].length; j++) {
+                if(object.equals(POSSIBLE_LABELS[i][j])) {
+                    if(checked[i]) {
+                        Toast.makeText(CheckListActivity.this,
+                                "You already have that item.", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    checked[i] = true;
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     private void openCamera() {
@@ -172,39 +274,52 @@ public class CheckListActivity extends AppCompatActivity {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+            mImageView.layout(0, 0, 500, 400);
             mImageView.setImageURI(image_uri);
+            mImageView.setDrawingCacheEnabled(true);
+            Bitmap bmap = mImageView.getDrawingCache();
+            List<ImageClassifier.Recognition> predictions = imageClassifier.recognizeImage(
+                    bmap, 0);
+            String [] predictionsArr = new String [5];
+
+            for(int i = 0; i < predictions.size(); i++) {
+                predictionsArr[i] = predictions.get(i).getName();
+            }
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] byteArray = stream.toByteArray();
+            Intent intent = new Intent(CheckListActivity.this, PopupActivity.class);
+            intent.putExtra("photo", byteArray);
+            intent.putExtra("names", predictionsArr);
+            startActivity(intent);
         }
     }
 
     public void setInvisible(int num){
-        foodText.setVisibility(View.INVISIBLE);
-        maskText.setVisibility(View.INVISIBLE);
-        medsText.setVisibility(View.INVISIBLE);
-        firstAidText.setVisibility(View.INVISIBLE);
-        flashlightText.setVisibility(View.INVISIBLE);
-        radioText.setVisibility(View.INVISIBLE);
-        docsText.setVisibility(View.INVISIBLE);
-        cashText.setVisibility(View.INVISIBLE);
-        if(num==1)
-            foodText.setVisibility(View.VISIBLE);
-        else if(num==2)
-            maskText.setVisibility(View.VISIBLE);
-        else if(num==3)
-            medsText.setVisibility(View.VISIBLE);
-        else if(num==4)
-            firstAidText.setVisibility(View.VISIBLE);
-        else if(num==5)
-            flashlightText.setVisibility(View.VISIBLE);
-        else if(num==6)
-            radioText.setVisibility(View.VISIBLE);
-        else if(num==7)
-            docsText.setVisibility(View.VISIBLE);
-        else if(num==8)
-            cashText.setVisibility(View.VISIBLE);
+        for (int i = 0; i < checks.length; i++) {
+            if(i == num) textArr[i].setVisibility(View.VISIBLE);
+            else textArr[i].setVisibility(View.INVISIBLE);
+        }
+    }
+
+    public void setCheckBoxes() {
+        SharedPreferences.Editor editor = userData.edit();
+        for(int i = 0; i < checks.length; i++) {
+            if(checked[i])
+                checks[i].setVisibility(View.VISIBLE);
+            else checks[i].setVisibility(View.INVISIBLE);
+            editor.putBoolean("checked" + i, checked[i]);
+            editor.commit();
+        }
+        TextView pointsText = (TextView) findViewById(R.id.points);
+        pointsText.setText("Points: " + points);
+        manager.setListPoints(points);
     }
 }
 
