@@ -8,4 +8,6 @@
     <color name="yellow">#ffbd59</color>
     <color name="lightBlue">#36b6ff</color>
     <color name="lightGrey">#f1f1f1</color>
+    <color name="green">#4CAF50</color>
+    <color name="gray_green">#79a87b</color>
 </resources>

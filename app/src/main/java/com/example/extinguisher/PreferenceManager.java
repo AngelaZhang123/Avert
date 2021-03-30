@@ -24,12 +24,9 @@ public class PreferenceManager {
     private boolean [] completeList;
     private int [] starsArr;
     private static final int NUM_LEVELS = 4;
-    private int points;
-    private int listPoints;
+    private int points, listPoints, avatarIndex;
 
-    private PreferenceManager() {
-        points = 0;
-    }
+    private PreferenceManager() { }
 
     public void initialize(Context context) {
         if (!isInitialised) {
@@ -87,6 +84,15 @@ public class PreferenceManager {
         return starsArr[i];
     }
 
+    public void setAvatarIndex(int i) {
+        avatarIndex = i;
+        savePreferences();
+    }
+
+    public int getAvatarIndex() {
+        return avatarIndex;
+    }
+
     private void savePreferences() {
         for(int i = 0; i < NUM_LEVELS; i++) {
             editor.putBoolean(COMPLETE + i, completeList[i]);
@@ -94,6 +100,7 @@ public class PreferenceManager {
         }
         editor.putInt("points", points);
         editor.putInt("list points", listPoints);
+        editor.putInt("index", avatarIndex);
         editor.commit();
     }
 
@@ -104,5 +111,6 @@ public class PreferenceManager {
         }
         points = preferences.getInt("points", 0);
         listPoints = preferences.getInt("list points", 0);
+        avatarIndex = preferences.getInt("index", 0);
     }
 }

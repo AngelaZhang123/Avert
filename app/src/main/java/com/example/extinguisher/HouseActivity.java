@@ -47,7 +47,11 @@ public class HouseActivity extends AppCompatActivity {
     };
 
     private int[] initialImages = new int[] {
-            R.drawable.firehouse, R.drawable.man, R.drawable.man, R.drawable.clothes_fire, R.drawable.man
+            R.drawable.firehouse, R.drawable.man, R.drawable.smokeman, R.drawable.clothes_fire, R.drawable.firehouse
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.run, R.drawable.window, R.drawable.crouch, R.drawable.roll, R.drawable.family
     };
 
     @Override
@@ -113,6 +117,7 @@ public class HouseActivity extends AppCompatActivity {
 
     private void setToastText() {
         if(choice == mQuestionArr[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             mAButton.setEnabled(false);
             mBButton.setEnabled(false);
             mCButton.setEnabled(false);
@@ -147,6 +152,11 @@ public class HouseActivity extends AppCompatActivity {
     private void updatePicture() {
         ImageView img= (ImageView) findViewById(R.id.house_image);
         img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2() {
+        ImageView img= (ImageView) findViewById(R.id.house_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void gameOver() {

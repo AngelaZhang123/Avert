@@ -41,7 +41,11 @@ public class EQLevel1Activity extends AppCompatActivity {
     };
 
     private int[] initialImages = new int[] {
-            R.drawable.man, R.drawable.duck, R.drawable.duck, R.drawable.home
+            R.drawable.man, R.drawable.crouch, R.drawable.duck, R.drawable.home
+    };
+
+    private int[] finalImages = new int[] {
+            R.drawable.table, R.drawable.duck, R.drawable.duck, R.drawable.exit
     };
 
     @Override
@@ -102,6 +106,7 @@ public class EQLevel1Activity extends AppCompatActivity {
         else
             choice3Button.setEnabled(false);
         if(num ==mQuestionArr[mCurrIndex].getCorrectAnswer()) {
+            updatePicture2();
             nextButton.setEnabled(true);
             nextButton.setVisibility(View.VISIBLE);
             choice1Button.setEnabled(false);
@@ -132,6 +137,11 @@ public class EQLevel1Activity extends AppCompatActivity {
     private void updatePicture() {
         ImageView img= (ImageView) findViewById(R.id.eq1_image);
         img.setImageResource(initialImages[mCurrIndex]);
+    }
+
+    private void updatePicture2 (){
+        ImageView img= (ImageView) findViewById(R.id.eq1_image);
+        img.setImageResource(finalImages[mCurrIndex]);
     }
 
     private void updateLives() {

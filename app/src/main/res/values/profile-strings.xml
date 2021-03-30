@@ -4,4 +4,6 @@
     <string name="total_points">Total Points: </string>
     <string name="total_levels">Levels Completed: </string>
     <string name="stars">Stars: </string>
+    <string name="avatar_button">Change Avatar</string>
+    <string name="select">Select Avatar</string>
 </resources>

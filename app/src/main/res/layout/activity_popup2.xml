@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopupActivity2"
+    android:background="@color/lightBlue">
+
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="35dp"
+        android:background="@drawable/rectangle"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/img_recog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/img_recog"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Please choose which checklist item this is a photo of, or, click the button below to retake the picture."
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
+
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo">
+
+        <RadioButton
+            android:id="@+id/r1c1"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="masks"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r2c1"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="medicine"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r3c1"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="flashlight"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r4c1"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="important documents"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r5c1"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="sanitation items"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/radio_group2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photo">
+
+        <RadioButton
+            android:id="@+id/r1c2"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="food"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r2c2"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="first aid kit"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r3c2"
+            android:layout_width="130dp"
+            android:layout_height="32dp"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="radio"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r4c2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="cash"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/r5c2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:scaleX=".8"
+            android:scaleY=".8"
+            android:text="water"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/retake_button"
+        android:layout_width="120dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="#F44336"
+        android:elevation="5dp"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:text="RETAKE PHOTO"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"/>
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="90dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/green"
+        android:elevation="5dp"
+        android:shadowColor="#003C2626"
+        android:shadowRadius="30"
+        android:text="DONE"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

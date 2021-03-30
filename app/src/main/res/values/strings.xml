@@ -2,7 +2,7 @@
     <string name="app_name">Avert</string>
     <string name="menu_button"> Main Menu </string>
     <string name="checklist_button">Checklist</string>
-    <string name="info_button">Information</string>
+    <string name="info_button">Handbook</string>
     <string name="simulation_button">Simulations</string>
     <string name="profile_button">My profile</string>
     <string name="wildfire_button">Wildfires</string>
@@ -23,4 +23,11 @@
     <string name="kit_7">Copy of important documents</string>
     <string name="kit_8">Cash</string>
     <string name="points">Points: </string>
+
+    <string name="img_recog">Image Recognition</string>
+    <string name="checklist_info_text">Welcome to your emergency kit checklist! Below are some
+        items that are important to include in an emergency kit. To use this checklist, purchase
+        or find each of the items below. Then, use the camera button to the right to take a photo
+        of each item. The app will recognize what is in the photo and check off that item on the list.
+        For each item that you get, you will receive two points.</string>
 </resources>
