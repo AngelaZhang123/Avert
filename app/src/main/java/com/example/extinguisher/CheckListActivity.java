@@ -88,6 +88,7 @@ public class CheckListActivity extends AppCompatActivity {
             }
         });
 
+
         cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
