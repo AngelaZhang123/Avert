@@ -29,5 +29,77 @@
         items that are important to include in an emergency kit. To use this checklist, purchase
         or find each of the items below. Then, use the camera button to the right to take a photo
         of each item. The app will recognize what is in the photo and check off that item on the list.
-        For each item that you get, you will receive two points.</string>
+        For each item that you get, you will receive two points. You can also uncheck items by clicking
+        on the checkbox. Additionally, it is important to regularly check the items in your kit to
+        make sure that nothing has expired or needs to be replaced. AVERT will send you notifications
+        reminding you to check your emergency kit. Preferences for these notifications can be changed
+        by clicking on the icon to the left.</string>
+    <string-array name="times">
+        <item>year(s)</item>
+        <item>month(s)</item>
+    </string-array>
+    <string-array name="months">
+        <item>Jan.</item>
+        <item>Feb.</item>
+        <item>Mar.</item>
+        <item>Apr.</item>
+        <item>May</item>
+        <item>Jun.</item>
+        <item>Jul.</item>
+        <item>Aug.</item>
+        <item>Sep.</item>
+        <item>Oct.</item>
+        <item>Nov.</item>
+        <item>Dec.</item>
+    </string-array>
+
+    <string-array name="days31">
+        <item>1</item> <item>2</item> <item>3</item> <item>4</item>
+        <item>5</item> <item>6</item> <item>7</item> <item>8</item>
+        <item>9</item> <item>10</item> <item>11</item> <item>12</item>
+        <item>13</item> <item>14</item> <item>15</item> <item>16</item>
+        <item>17</item> <item>18</item> <item>19</item> <item>20</item>
+        <item>21</item> <item>22</item> <item>23</item> <item>24</item>
+        <item>25</item> <item>26</item> <item>27</item> <item>28</item>
+        <item>29</item> <item>30</item> <item>31</item>
+    </string-array>
+
+    <integer-array name="days30">
+        <item>1</item> <item>2</item> <item>3</item> <item>4</item>
+        <item>5</item> <item>6</item> <item>7</item> <item>8</item>
+        <item>9</item> <item>10</item> <item>11</item> <item>12</item>
+        <item>13</item> <item>14</item> <item>15</item> <item>16</item>
+        <item>17</item> <item>18</item> <item>19</item> <item>20</item>
+        <item>21</item> <item>22</item> <item>23</item> <item>24</item>
+        <item>25</item> <item>26</item> <item>27</item> <item>28</item>
+        <item>29</item> <item>30</item>
+    </integer-array>
+
+    <integer-array name="days28">
+        <item>1</item> <item>2</item> <item>3</item> <item>4</item>
+        <item>5</item> <item>6</item> <item>7</item> <item>8</item>
+        <item>9</item> <item>10</item> <item>11</item> <item>12</item>
+        <item>13</item> <item>14</item> <item>15</item> <item>16</item>
+        <item>17</item> <item>18</item> <item>19</item> <item>20</item>
+        <item>21</item> <item>22</item> <item>23</item> <item>24</item>
+        <item>25</item> <item>26</item> <item>27</item> <item>28</item>
+    </integer-array>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+    <string name="channel_name">Notifications</string>
+    <string name="channel_description">Notifications for AVERT</string>
 </resources>

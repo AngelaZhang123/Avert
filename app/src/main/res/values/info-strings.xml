@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wound1">Keep the wound clean by washing with soap and cover with a bandage.</string>
+    <string name="wound2">Clean the skin around the wound with warm, soapy water. If you don’t
+        have access to clean water, use alcohol wipes. Seek medical care immediately.</string>
+    <string name="wound3">Put ice on it and don’t move around. Compress it with a bandage and
+        elevate your ankle to reduce swelling. Seek medical care if possible.</string>
+    <string name="wound4">Lie down with your head slightly elevated. Don’t move if unnecessary.
+        Seek medical care.</string>
+    <string name="wound5">Immediately call an adult over and tell them to perform CPR. Seek medical care.</string>
+    <string name="whatif1">Attract attention to yourself - shout, blow a whistle, or bang on a wall or pipe.
+        Protect your mouth, nose, and eyes from dust.</string>
+    <string name="whatif2">Wear a N95 respirator to filter out the ash.</string>
+    <string name="whatif3"><![CDATA[Call 911 and PG & E. Then leave the area immediately.]]></string>
+    <string name="whatif4">Use flashlights and try to avoid lighting candles. If you have a power generator, be sure
+        to use it outside.</string>
+</resources>

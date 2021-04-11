@@ -11,7 +11,7 @@ public class PreferenceManager {
     private static PreferenceManager self;
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
-    private boolean isInitialised;
+    private boolean isInitialised, notifsOn, notified;
     private static final String COMPLETE = "Complete";
     private static final String STARS = "Stars";
     /*
@@ -24,7 +24,9 @@ public class PreferenceManager {
     private boolean [] completeList;
     private int [] starsArr;
     private static final int NUM_LEVELS = 4;
-    private int points, listPoints, avatarIndex;
+    private int points, listPoints, avatarIndex, notifNum;
+    private int spinnerItem; // 0 = year, 1 = month
+    private String date;
 
     private PreferenceManager() { }
 
@@ -44,6 +46,30 @@ public class PreferenceManager {
             self = new PreferenceManager();
         }
         return self;
+    }
+
+    public boolean isNotified() {
+        return notified;
+    }
+
+    public void setNotified(boolean n) {
+        notified = n;
+    }
+
+    public void setNotifInfo(int i, boolean b, int s) {
+        notifNum = i;
+        notifsOn = b;
+        spinnerItem = s;
+        savePreferences();
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String d) {
+        date = d;
+        savePreferences();
     }
 
     public void setComplete(boolean c, int i, int s) {
@@ -93,6 +119,18 @@ public class PreferenceManager {
         return avatarIndex;
     }
 
+    public int getNotifNum() {
+        return notifNum;
+    }
+
+    public boolean isNotifsOn() {
+        return notifsOn;
+    }
+
+    public int getSpinnerItem() {
+        return spinnerItem;
+    }
+
     private void savePreferences() {
         for(int i = 0; i < NUM_LEVELS; i++) {
             editor.putBoolean(COMPLETE + i, completeList[i]);
@@ -101,16 +139,28 @@ public class PreferenceManager {
         editor.putInt("points", points);
         editor.putInt("list points", listPoints);
         editor.putInt("index", avatarIndex);
+        editor.putInt("notif num", notifNum);
+        editor.putBoolean("notifs on", notifsOn);
+        editor.putInt("spinner item", spinnerItem);
+        editor.putString("date", date);
         editor.commit();
     }
 
     private void loadPreferences() {
         for(int i = 0; i < completeList.length; i++) {
             completeList[i] = preferences.getBoolean(COMPLETE + i, false);
-            starsArr[i] = preferences.getInt(STARS + i, starsArr[i]);
+            starsArr[i] = preferences.getInt(STARS + i, 0);
         }
         points = preferences.getInt("points", 0);
         listPoints = preferences.getInt("list points", 0);
         avatarIndex = preferences.getInt("index", 0);
+        notifNum = preferences.getInt("notif num", 1);
+        notifsOn = preferences.getBoolean("notifs on", true);
+        spinnerItem = preferences.getInt("spinner item", 0);
+        long millis = System.currentTimeMillis();
+        String d = String.valueOf(new java.sql.Date(millis));
+        int currentYear = Integer.parseInt(d.substring(0, 4)) + 1;
+        d = currentYear + d.substring(4);
+        date = preferences.getString("date", d);
     }
 }
