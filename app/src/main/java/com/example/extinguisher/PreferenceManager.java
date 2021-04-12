@@ -14,13 +14,8 @@ public class PreferenceManager {
     private boolean isInitialised, notifsOn, notified;
     private static final String COMPLETE = "Complete";
     private static final String STARS = "Stars";
-    /*
-    indexes for completeList:
-    0 = wildfire level 1
-    1 = wildfire level 2
-    2 = earthquake level 1
-    3 = earthquake level 2
-     */
+    public static final int WILDFIRE1 = 0, WILDFIRE2 = 1,
+            EARTHQUAKE1 = 2, EARTHQUAKE2 = 3;
     private boolean [] completeList;
     private int [] starsArr;
     private static final int NUM_LEVELS = 4;

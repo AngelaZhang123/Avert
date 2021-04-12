@@ -22,9 +22,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="70dp"
         android:fontFamily="@font/archive"
         android:text="AVERT"
         android:textAllCaps="false"
@@ -34,24 +35,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
-    <ImageView
-        android:id="@+id/logo"
+    <ImageButton
+        android:id="@+id/home_info"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
-        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
-
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/myRectangleView"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/leaguespartan"
+        android:gravity="center_horizontal"
         android:text="The Survivor's Handbook"
         android:textAllCaps="true"
         android:textColor="@color/red"
@@ -61,28 +64,103 @@
         app:layout_constraintTop_toBottomOf="@+id/myRectangleView" />
 
     <ImageView
-        android:id="@+id/banner1"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:id="@+id/banner0"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="58dp"
         android:backgroundTint="@color/yellow"
         android:src="@drawable/banner"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/importance_title"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/leaguespartan"
+        android:text="Information about natural disasters"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="@+id/banner0"
+        app:layout_constraintStart_toStartOf="@+id/banner0"
+        app:layout_constraintTop_toTopOf="@+id/banner0" />
+
+    <Button
+        android:id="@+id/info1"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="Wildfires"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner0" />
+
+    <TextView
+        android:id="@+id/info_text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/antic"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/info2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info1" />
+
+    <Button
+        android:id="@+id/info2"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
+        android:fontFamily="@font/antic"
+        android:text="Earthquakes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_text1"
+        app:layout_constraintBottom_toTopOf="@+id/info_text2"/>
+
+    <TextView
+        android:id="@+id/info_text2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/antic"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info2" />
+
+    <ImageView
+        android:id="@+id/banner1"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/yellow"
+        android:src="@drawable/banner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info_text2" />
 
     <TextView
         android:id="@+id/injury_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
         android:fontFamily="@font/leaguespartan"
-        android:text="I'm hurt- injuries guide"
+        android:text="I'm hurt - injuries guide"
         android:textColor="@android:color/white"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintBottom_toBottomOf="@+id/banner1"
+        app:layout_constraintStart_toStartOf="@+id/banner1"
+        app:layout_constraintTop_toTopOf="@+id/banner1" />
 
     <Button
         android:id="@+id/wound1"
@@ -220,13 +298,12 @@
 
     <ImageView
         android:id="@+id/banner2"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_width="266dp"
+        android:layout_height="60dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="58dp"
         android:backgroundTint="@color/yellow"
         android:src="@drawable/banner"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/wound_text5" />
 
     <TextView
@@ -234,11 +311,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
         android:fontFamily="@font/leaguespartan"
         android:text="What should I do if...?"
         android:textColor="@android:color/white"
         android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/banner2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/banner2" />
 
