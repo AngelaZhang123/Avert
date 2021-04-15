@@ -97,8 +97,9 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
         points = manager.getListPoints();
         userData = this.getSharedPreferences("List Preferences", 0);
         notifsOn = manager.isNotifsOn();
-        alarmSet = userData.getBoolean("alarm is set", false);
+        alarmSet = userData.getBoolean("alarm is set", true);
         date = manager.getDate();
+        updateAlarm(notifsOn);
 
         cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         cameraButton = (ImageButton) findViewById(R.id.cameraButton);
@@ -251,8 +252,10 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
         int year = Integer.parseInt(dateArr[0]);
         int month = Integer.parseInt(dateArr[1]) - 1;
         int day = Integer.parseInt(dateArr[2]);
+        long time = System.currentTimeMillis() + 30 * 1000;
 
         if(manager.isNotified()) {
+            time += 30 * 1000;
             if (spinnerItem == 0) year += notifNum;
             else if (spinnerItem == 1) month += notifNum;
             manager.setNotified(false);
@@ -272,8 +275,8 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
         AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(CheckListActivity.this, 0,
                 alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        if (on && System.currentTimeMillis() < alarmTime)
-            alarmMgr.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+        if (on && System.currentTimeMillis() < time)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
         else alarmMgr.cancel(pendingIntent);
 
         manager.setDate(year + "-" + (month + 1) + "-" + day);
