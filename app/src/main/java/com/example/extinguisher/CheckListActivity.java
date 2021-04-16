@@ -57,7 +57,7 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
     private TextView [] textArr;
     private TextView infoText;
     private ImageView [] checks;
-    private boolean [] checked;
+    private boolean [] checked, textShown;
     private boolean notifsOn;
     private boolean showInfo;
     private ConstraintLayout cLayout;
@@ -128,6 +128,8 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
                 findViewById(R.id.check7), findViewById(R.id.check8), findViewById(R.id.check9),
                 findViewById(R.id.check10)
         };
+
+        textShown = new boolean [textArr.length];
 
         setInvisible(checks.length);
 
@@ -252,10 +254,9 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
         int year = Integer.parseInt(dateArr[0]);
         int month = Integer.parseInt(dateArr[1]) - 1;
         int day = Integer.parseInt(dateArr[2]);
-        long time = System.currentTimeMillis() + 30 * 1000;
 
         if(manager.isNotified()) {
-            time += 30 * 1000;
+            Toast.makeText(this, "Time to check your emergency kit!", Toast.LENGTH_SHORT).show();
             if (spinnerItem == 0) year += notifNum;
             else if (spinnerItem == 1) month += notifNum;
             manager.setNotified(false);
@@ -275,8 +276,8 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
         AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(CheckListActivity.this, 0,
                 alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        if (on && System.currentTimeMillis() < time)
-            alarmMgr.set(AlarmManager.RTC_WAKEUP, time, pendingIntent);
+        if (on && System.currentTimeMillis() < alarmTime)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
         else alarmMgr.cancel(pendingIntent);
 
         manager.setDate(year + "-" + (month + 1) + "-" + day);
@@ -387,8 +388,14 @@ public class CheckListActivity extends AppCompatActivity implements SettingsDial
 
     public void setInvisible(int num){
         for (int i = 0; i < checks.length; i++) {
-            if(i == num) textArr[i].setVisibility(View.VISIBLE);
-            else textArr[i].setVisibility(View.INVISIBLE);
+            if(i == num && !textShown[i]) {
+                textArr[i].setVisibility(View.VISIBLE);
+                textShown[i] = true;
+            }
+            else {
+                textArr[i].setVisibility(View.INVISIBLE);
+                textShown[i] = false;
+            }
         }
     }
 
