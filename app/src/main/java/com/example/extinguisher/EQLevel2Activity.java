@@ -56,6 +56,7 @@ public class EQLevel2Activity extends AppCompatActivity {
         nextButton = (ImageButton) findViewById(R.id.nextButton);
         mLivesText = (TextView) findViewById(R.id.eq2_lives_text);
         nextButton.setVisibility(View.INVISIBLE);
+        backButton = (Button) findViewById(R.id.backButton);
         updateQuestion();
         updatePicture();
 
@@ -89,6 +90,14 @@ public class EQLevel2Activity extends AppCompatActivity {
                 mCurrIndex++;
                 if(mCurrIndex == mAnswerArr.length) gameOver();
                 else updateQuestion();
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EQLevel2Activity.this, EarthquakeActivity.class);
+                startActivity(intent);
             }
         });
     }

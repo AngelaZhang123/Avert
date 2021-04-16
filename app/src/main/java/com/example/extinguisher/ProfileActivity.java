@@ -11,9 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity {
-    private int [] images = {R.drawable.smiley, R.drawable.blue_smiley, R.drawable.yellow_smiley};
-    private int [] pointsNeeded = {0, 15, 30};
-    private ImageButton rightButton, leftButton;
+    private final int [] images = {R.drawable.avatar_one, R.drawable.avatar_two, R.drawable.avatar_three};
+    private final int [] pointsNeeded = {0, 15, 30};
     private Button selectButton;
     private ImageView avatar, lock, square;
     private TextView avatarText;
@@ -30,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
         points = manager.getTotalPoints();
         int levels = manager.getNumComplete();
         avatar = (ImageView) findViewById(R.id.avatar);
-        currIndex = manager.getAvatarIndex();
+        selected = currIndex = manager.getAvatarIndex();
         lock = (ImageView) findViewById(R.id.lock_image);
         square = (ImageView) findViewById(R.id.border);
         selectButton = (Button) findViewById(R.id.select_avatar);
@@ -42,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
         TextView levelsText = (TextView) findViewById(R.id.profile_levels);
         levelsText.setText("" + levelsText.getText() + " " + levels);
 
-        rightButton = (ImageButton) findViewById(R.id.right_arrow);
+        ImageButton rightButton = (ImageButton) findViewById(R.id.right_arrow);
         rightButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -52,7 +51,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        leftButton = (ImageButton) findViewById(R.id.left_arrow);
+        ImageButton leftButton = (ImageButton) findViewById(R.id.left_arrow);
         leftButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -68,8 +67,18 @@ public class ProfileActivity extends AppCompatActivity {
                 selected = currIndex;
                 manager.setAvatarIndex(selected);
                 square.setVisibility(View.VISIBLE);
-                avatarText.setVisibility(View.VISIBLE);
                 avatarText.setText("Selected");
+                avatarText.setVisibility(View.VISIBLE);
+                selectButton.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        ImageButton homeButton = (ImageButton) findViewById(R.id.home_profile);
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, MenuActivity.class);
+                startActivity(intent);
             }
         });
 

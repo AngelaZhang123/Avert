@@ -18,9 +18,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginStart="60dp"
         android:fontFamily="@font/archive"
         android:text="AVERT"
         android:textAllCaps="false"
@@ -30,15 +31,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
-    <ImageView
-        android:id="@+id/logo"
+    <ImageButton
+        android:id="@+id/home_simulations"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:src="@drawable/logo"
-        app:layout_constraintStart_toStartOf="parent"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
-        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/simulation_title"

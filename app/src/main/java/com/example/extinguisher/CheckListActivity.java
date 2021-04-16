@@ -5,10 +5,16 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +25,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -34,25 +41,29 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
-public class CheckListActivity extends AppCompatActivity {
+public class CheckListActivity extends AppCompatActivity implements SettingsDialog.SettingsDialogListener {
 
     private static final int PERMISSION_CODE = 1000;
     private static final int IMAGE_CAPTURE_CODE = 1001;
 
-    private int points;
+    private int points, notifNum, spinnerItem;
     private ImageView mImageView;
-    private ImageButton cameraButton, backButton, infoButton;
+    private ImageButton cameraButton, backButton, infoButton, settingsButton;
     private ImageButton [] imgBtnArr;
     private TextView [] textArr;
     private TextView infoText;
     private ImageView [] checks;
-    private boolean [] checked;
+    private boolean [] checked, textShown;
+    private boolean notifsOn;
     private boolean showInfo;
     private ConstraintLayout cLayout;
     private ImageClassifier imageClassifier;
+    private final String CHANNEL_ID = "kit notification";
+    private String date;
     private final String [][] POSSIBLE_LABELS = new String [][] {
             {"gasmask", "mask", "ski mask", "handkerchief"},
             {"French loaf", "bagel", "pretzel", "cheeseburger", "hotdog", "mashed potato",
@@ -69,6 +80,7 @@ public class CheckListActivity extends AppCompatActivity {
             "masks", "food", "medicine", "first aid kit", "flashlight", "radio", "important documents",
             "cash", "sanitation items", "water"
     };
+    private boolean alarmSet;
 
     Uri image_uri;
     PreferenceManager manager;
@@ -78,17 +90,23 @@ public class CheckListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_list);
+        createNotificationChannel();
 
         manager = PreferenceManager.getInstance();
         manager.initialize(getApplicationContext());
         points = manager.getListPoints();
         userData = this.getSharedPreferences("List Preferences", 0);
+        notifsOn = manager.isNotifsOn();
+        alarmSet = userData.getBoolean("alarm is set", true);
+        date = manager.getDate();
+        updateAlarm(notifsOn);
 
         cLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         cameraButton = (ImageButton) findViewById(R.id.cameraButton);
         mImageView = (ImageView) findViewById(R.id.imageView);
         backButton = (ImageButton) findViewById(R.id.home_button);
         infoButton = (ImageButton) findViewById(R.id.about_button);
+        settingsButton = (ImageButton) findViewById(R.id.settings_button);
 
         imgBtnArr = new ImageButton [] {
                 findViewById(R.id.maskButton), findViewById(R.id.foodButton), findViewById(R.id.firstAidButton),
@@ -110,6 +128,8 @@ public class CheckListActivity extends AppCompatActivity {
                 findViewById(R.id.check7), findViewById(R.id.check8), findViewById(R.id.check9),
                 findViewById(R.id.check10)
         };
+
+        textShown = new boolean [textArr.length];
 
         setInvisible(checks.length);
 
@@ -159,6 +179,14 @@ public class CheckListActivity extends AppCompatActivity {
             }
         });
 
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckListActivity.this, ChecklistSettingsActivity.class);
+                openDialog();
+            }
+        });
+
         cLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,6 +206,11 @@ public class CheckListActivity extends AppCompatActivity {
 
         Intent intentIn = getIntent();
         Bundle extras = intentIn.getExtras();
+        setExtras(extras);
+        setCheckBoxes();
+    }
+
+    private void setExtras(Bundle extras) {
         if(extras !=  null) {
             if(extras.getString("object", null) != null) {
                 String object = extras.getString("object");
@@ -207,10 +240,62 @@ public class CheckListActivity extends AppCompatActivity {
                     }
                 }
             }
-            else if(extras.getBoolean("open camera", false))
-                cameraClicked();
+            else if(extras.getBoolean("open camera", false)) cameraClicked();
         }
-        setCheckBoxes();
+    }
+
+    private void openDialog() {
+        SettingsDialog dialog = new SettingsDialog();
+        dialog.show(getSupportFragmentManager(), "settings dialog");
+    }
+
+    private void updateAlarm(boolean on) {
+        String [] dateArr = date.split("-");
+        int year = Integer.parseInt(dateArr[0]);
+        int month = Integer.parseInt(dateArr[1]) - 1;
+        int day = Integer.parseInt(dateArr[2]);
+
+        if(manager.isNotified()) {
+            Toast.makeText(this, "Time to check your emergency kit!", Toast.LENGTH_SHORT).show();
+            if (spinnerItem == 0) year += notifNum;
+            else if (spinnerItem == 1) month += notifNum;
+            manager.setNotified(false);
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DAY_OF_MONTH, day);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        long alarmTime = calendar.getTimeInMillis();
+
+        Intent alarmIntent = new Intent(CheckListActivity.this, NotificationReceiver.class);
+        AlarmManager alarmMgr = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(CheckListActivity.this, 0,
+                alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        if (on && System.currentTimeMillis() < alarmTime)
+            alarmMgr.set(AlarmManager.RTC_WAKEUP, alarmTime, pendingIntent);
+        else alarmMgr.cancel(pendingIntent);
+
+        manager.setDate(year + "-" + (month + 1) + "-" + day);
+        alarmSet = true;
+        SharedPreferences.Editor editor = userData.edit();
+        editor.putBoolean("alarm is set", alarmSet);
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notifMgr = getSystemService(NotificationManager.class);
+            notifMgr.createNotificationChannel(channel);
+        }
     }
 
     private void cameraClicked() {
@@ -303,8 +388,14 @@ public class CheckListActivity extends AppCompatActivity {
 
     public void setInvisible(int num){
         for (int i = 0; i < checks.length; i++) {
-            if(i == num) textArr[i].setVisibility(View.VISIBLE);
-            else textArr[i].setVisibility(View.INVISIBLE);
+            if(i == num && !textShown[i]) {
+                textArr[i].setVisibility(View.VISIBLE);
+                textShown[i] = true;
+            }
+            else {
+                textArr[i].setVisibility(View.INVISIBLE);
+                textShown[i] = false;
+            }
         }
     }
 
@@ -320,6 +411,21 @@ public class CheckListActivity extends AppCompatActivity {
         TextView pointsText = (TextView) findViewById(R.id.points);
         pointsText.setText("Points: " + points);
         manager.setListPoints(points);
+    }
+
+    @Override
+    public void applyInfo(int num, boolean on, int item) {
+        notifNum = num;
+        notifsOn = on;
+        spinnerItem = item;
+        manager.setNotifInfo(num, on, item);
+        spinnerItem = item;
+        updateAlarm(notifsOn);
+    }
+
+    public void applyDate(String d) {
+        date = d;
+        manager.setDate(d);
     }
 }
 
