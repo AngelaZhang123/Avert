@@ -276,6 +276,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
     }
 
     public String fixText(String num, int phoneNum){
+            String fixed;
             if(num.length()!=10)
             {
                 if(phoneNum==1)
@@ -286,20 +287,25 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     phoneB3.setVisibility(View.INVISIBLE);
                 else
                     phoneB4.setVisibility(View.INVISIBLE);
+                fixed = "";
             }
-
-            String fixed = "("+num.substring(0,3)+")"+" "+num.substring(3,6)+"-"+num.substring(6);
+            else
+                fixed = "("+num.substring(0,3)+")"+" "+num.substring(3,6)+"-"+num.substring(6);
             return fixed;
     }
 
     public void setNumber(int num, EditText phone, Button phoneB){
         String phoneNum = phoneNums.getString("phoneN"+num, ""); //MAKE SURE UR ABLE TO SWITCH THE NUMBER
-        if(phoneNum.equals("") && phone.getText().toString().equals("")) {
+        String newNum = phone.getText().toString();
+        boolean notSame = true;
+        if(phoneNum.equals(newNum))
+            notSame = false;
+        if(phoneNum.equals("") && newNum.equals("")) {
             phoneB.setText("Add Number");
         }
-        else if (phoneNum.equals("")) {
-            editor.putString("phoneN" + num, phone.getText().toString());
-            phoneB.setText(fixText(phone.getText().toString(), num));
+        else if (phoneNum.equals("")|| notSame) {
+            editor.putString("phoneN" + num, newNum);
+            phoneB.setText(fixText(newNum, num));
             editor.apply();
         }
         else{

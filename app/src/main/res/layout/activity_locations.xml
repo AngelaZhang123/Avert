@@ -20,9 +20,10 @@
         android:id="@+id/spot1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="104dp"
         android:text="Spot near your home:"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/locationsTitle" />
 
@@ -31,14 +32,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Spot outside of neighborhood:"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="280dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="229dp" />
 
     <TextView
         android:id="@+id/spot3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Out of town locations:"
-        tools:layout_editor_absoluteX="86dp"
-        tools:layout_editor_absoluteY="443dp" />
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="294dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
