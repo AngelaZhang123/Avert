@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Button mListButton, mInfoButton, mProfileButton, mLevelButton;
+    private Button mListButton, mInfoButton, mProfileButton, mLevelButton, mPlanButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,15 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, SimulationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mPlanButton = (Button) findViewById(R.id.plan_button);
+        mPlanButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuActivity.this, EmergencyInfoActivity.class);
                 startActivity(intent);
             }
         });

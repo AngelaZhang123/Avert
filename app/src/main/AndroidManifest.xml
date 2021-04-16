@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".LocationsActivity"></activity>
+        <activity android:name=".EmergencyContactsActivity" />
+        <activity android:name=".EmergencyInfoActivity" />
         <activity
             android:name=".PopupActivity2"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LocationsActivity">
+
+    <TextView
+        android:id="@+id/locationsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Emergency Locations"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/spot1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Spot near your home:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/locationsTitle" />
+
+    <TextView
+        android:id="@+id/spot2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Spot outside of neighborhood:"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+    <TextView
+        android:id="@+id/spot3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Out of town locations:"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="443dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
