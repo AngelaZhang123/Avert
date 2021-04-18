@@ -36,7 +36,7 @@ public class EmergencyInfoActivity extends AppCompatActivity {
         medsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(EmergencyInfoActivity.this, EmergencyContactsActivity.class);
+                Intent intent = new Intent(EmergencyInfoActivity.this, MedsActivity.class);
                 startActivity(intent);
             }
         });

@@ -5,41 +5,185 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LocationsActivity">
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+    <ImageButton
+        android:id="@+id/logoL"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:srcCompat="@drawable/logo" />
+
 
     <TextView
         android:id="@+id/locationsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/archive"
+        android:gravity="center"
         android:text="Emergency Locations"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="false"
+        android:textColor="#ff5757"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/spot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:id="@+id/spotE1"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:text="Spot near your home:"
+        android:fontFamily="@font/archive"
+        android:textColor="@color/white"
+        android:background="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationsTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/info" />
 
     <TextView
-        android:id="@+id/spot2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/spotE2"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/yellow"
+        android:fontFamily="@font/archive"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
         android:text="Spot outside of neighborhood:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="229dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spotE1" />
 
     <TextView
-        android:id="@+id/spot3"
+        android:id="@+id/spotE3"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/yellow"
+        android:fontFamily="@font/archive"
+        android:text="Out of town location:"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spotE2" />
+
+    <TextView
+        android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Out of town locations:"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="294dp" />
+        android:layout_marginTop="20dp"
+        android:text="Emergency meeting spots are crucial to be prepared for various disasters. The closest meeting spot (the one near your home) should be used when you are separated from your family in a disaster, such as if a fire happens. The location outside of your neighborhood is necessary if you have to go slightly farther away. The out of town location is a place that you can go if you have to evacuate your house in an occasion such as a wildfire."
+        app:layout_constraintTop_toBottomOf="@+id/locationsTitle"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/med1"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/spotE1"
+        app:layout_constraintTop_toBottomOf="@+id/info" />
+
+    <EditText
+        android:id="@+id/spot2"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/spotE2"
+        app:layout_constraintTop_toBottomOf="@+id/med1" />
+
+    <EditText
+        android:id="@+id/spot3"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:text=""
+        app:layout_constraintStart_toEndOf="@+id/spotE3"
+        app:layout_constraintTop_toBottomOf="@+id/spot2" />
+
+    <Button
+        android:id="@+id/editB"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:background="@color/yellow"
+        android:text="Edit"
+        app:layout_constraintStart_toEndOf="@+id/locationsTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/spotT1"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:background="@color/yellow"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/archive"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/spotE1"
+        app:layout_constraintTop_toBottomOf="@+id/info" />
+
+    <TextView
+        android:id="@+id/spotT2"
+        android:layout_width="240dp"
+        android:background="@color/yellow"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/archive"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/spotE2"
+        app:layout_constraintTop_toBottomOf="@+id/med1" />
+
+    <TextView
+        android:id="@+id/spotT3"
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/yellow"
+        android:fontFamily="@font/archive"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/spotE3"
+        app:layout_constraintTop_toBottomOf="@+id/spot2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

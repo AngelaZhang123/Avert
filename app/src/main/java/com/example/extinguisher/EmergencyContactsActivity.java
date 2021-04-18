@@ -1,14 +1,23 @@
 package com.example.extinguisher;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import static java.lang.Integer.parseInt;
 
@@ -17,12 +26,23 @@ public class EmergencyContactsActivity extends AppCompatActivity {
 
         private Button editButton, addButton, phoneB1, phoneB2, phoneB3, phoneB4, phoneB5, phoneB6;
         private EditText phone1, phone2, phone3, phone4, phone5, phone6, phoneT4, phoneT5, phoneT6;
-        private TextView test, contact4, contact5, contact6 ;
+        private TextView contact4, contact5, contact6 ;
+        private ImageButton homeB;
         private boolean clicked=false;
         SharedPreferences phoneNums;
         SharedPreferences.Editor editor;
+        private static final int REQUEST_CALL = 1;
 
-        @Override
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == REQUEST_CALL){
+            if(!(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)){
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT);
+            }
+        }
+    }
+
+    @Override
         protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         phoneNums = getSharedPreferences("contacts", Context.MODE_PRIVATE);
@@ -36,8 +56,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
             phoneB4 = (Button) findViewById(R.id.phoneB4);
             phoneB5 = (Button) findViewById(R.id.phoneB5);
             phoneB6 = (Button) findViewById(R.id.phoneB6);
-
-            test = (TextView) findViewById(R.id.test);
+            homeB = (ImageButton) findViewById(R.id.logoC);
 
             contact4 = (TextView) findViewById(R.id.contactText4);
             contact5 = (TextView) findViewById(R.id.contactText5);
@@ -55,9 +74,8 @@ public class EmergencyContactsActivity extends AppCompatActivity {
             phoneB2.setVisibility(View.INVISIBLE);
             phoneB3.setVisibility(View.INVISIBLE);
             phoneB4.setVisibility(View.INVISIBLE);
-
-            changeEdit(1);
             setData(phoneNums);
+            changeEdit(1);
 
 
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +91,14 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     setData(phoneNums);
                 }
                 clicked=!clicked;
+            }
+        });
+
+        homeB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EmergencyContactsActivity.this, MenuActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -93,10 +119,65 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     editor.apply();
                 }
                 changeEdit(0);
-                test.setText(extraNum);
             }
         });
 
+        phoneB1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN1", "");
+                    makeCall(num);
+                }
+        });
+            phoneB2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN2", "");
+                    makeCall(num);
+                }
+            });
+            phoneB3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN3", "");
+                    makeCall(num);
+                }
+            });
+            phoneB4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN4", "");
+                    makeCall(num);
+                }
+            });
+            phoneB5.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN5", "");
+                    makeCall(num);
+                }
+            });
+            phoneB6.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String num = phoneNums.getString("phoneN6", "");
+                    makeCall(num);
+                }
+            });
+
+        }
+
+        public void makeCall(String num){
+            if (ContextCompat.checkSelfPermission( EmergencyContactsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
+              ActivityCompat.requestPermissions(EmergencyContactsActivity.this, new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            }
+            else {
+                if (num.length() == 10) {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:" + num));
+                    startActivity(callIntent);
+                }
+            }
         }
 
 
@@ -255,7 +336,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
             String name = phoneNums.getString("phoneT"+num, "");
             boolean notSame = true;
             String newName = phoneT.getText().toString();
-            if(name.equals(newName))
+            if(name.equals(newName) || name.equals("") || newName.equals(""))
                 notSame = false;
 
             if(name.equals("") && newName.equals(""))
@@ -295,10 +376,10 @@ public class EmergencyContactsActivity extends AppCompatActivity {
     }
 
     public void setNumber(int num, EditText phone, Button phoneB){
-        String phoneNum = phoneNums.getString("phoneN"+num, ""); //MAKE SURE UR ABLE TO SWITCH THE NUMBER
+        String phoneNum = phoneNums.getString("phoneN"+num, "");
         String newNum = phone.getText().toString();
         boolean notSame = true;
-        if(phoneNum.equals(newNum))
+        if(phoneNum.equals(newNum) || phoneNum.equals("") || newNum.equals(""))
             notSame = false;
         if(phoneNum.equals("") && newNum.equals("")) {
             phoneB.setText("Add Number");

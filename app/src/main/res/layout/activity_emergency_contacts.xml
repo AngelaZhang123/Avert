@@ -6,18 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".ContactsActivity">
 
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:background="@drawable/rectangle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageButton
+        android:id="@+id/logoC"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/myRectangleView"
+        app:srcCompat="@drawable/logo" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:fontFamily="@font/archive"
+        android:text="AVERT"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/myRectangleView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/myRectangleView" />
+
+
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
         android:fontFamily="@font/archive"
         android:gravity="center"
         android:text="Emergency Contacts"
         android:textAllCaps="false"
         android:textColor="#ff5757"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +60,8 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="220dp"
+        android:textColor="#ff5757"
         android:fontFamily="@font/archive"
         android:text="Fire Station"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,6 +73,7 @@
         android:layout_height="40dp"
         android:fontFamily="@font/archive"
         android:layout_marginStart="10dp"
+        android:textColor="#ff5757"
         android:layout_marginTop="20dp"
         android:text="Police"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,6 +85,7 @@
         android:layout_height="40dp"
         android:fontFamily="@font/archive"
         android:layout_marginStart="10dp"
+        android:textColor="#ff5757"
         android:layout_marginTop="20dp"
         android:text="Ambulance"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,6 +95,7 @@
         android:id="@+id/contactText4"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:textColor="#ff5757"
         android:fontFamily="@font/archive"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
@@ -70,6 +108,7 @@
         android:layout_height="40dp"
         android:fontFamily="@font/archive"
         android:layout_marginStart="10dp"
+        android:textColor="#ff5757"
         android:layout_marginTop="20dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +117,7 @@
         android:id="@+id/contactText6"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:textColor="#ff5757"
         android:fontFamily="@font/archive"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
@@ -90,7 +130,7 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="220dp"
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintStart_toEndOf="@+id/contactText1"
@@ -181,10 +221,11 @@
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="140dp"
+        android:background="@color/yellow"
         android:text="Add New Contact"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -192,11 +233,12 @@
     <Button
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="90dp"
+        android:background="@color/yellow"
         android:text="Edit"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
@@ -204,7 +246,8 @@
         android:layout_width="160dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="220dp"
+        android:background="@color/yellow"
         android:text="Button"
         app:layout_constraintStart_toEndOf="@+id/contactText1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -213,6 +256,7 @@
         android:id="@+id/phoneB2"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:background="@color/yellow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Button"
@@ -223,6 +267,7 @@
         android:id="@+id/phoneB3"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:background="@color/yellow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Button"
@@ -233,6 +278,7 @@
         android:id="@+id/phoneB4"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:background="@color/yellow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Button"
@@ -242,6 +288,7 @@
         android:id="@+id/phoneB5"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:background="@color/yellow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Button"
@@ -252,19 +299,12 @@
         android:id="@+id/phoneB6"
         android:layout_width="160dp"
         android:layout_height="40dp"
+        android:background="@color/yellow"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Button"
         app:layout_constraintStart_toEndOf="@+id/contactText1"
         app:layout_constraintTop_toBottomOf="@+id/phoneB5" />
-
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

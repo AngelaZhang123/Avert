@@ -13,12 +13,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LocationsActivity"></activity>
+        <activity android:name=".MedsActivity"></activity>
+        <activity android:name=".LocationsActivity" />
         <activity android:name=".EmergencyContactsActivity" />
         <activity android:name=".EmergencyInfoActivity" />
         <activity
             android:name=".ChecklistSettingsActivity"
-            android:theme="@style/CustomTheme"/>
+            android:theme="@style/CustomTheme" />
         <activity
             android:name=".PopupActivity2"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
@@ -44,7 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".NotificationReceiver"/>
+
+        <receiver android:name=".NotificationReceiver" />
     </application>
 
 </manifest>
