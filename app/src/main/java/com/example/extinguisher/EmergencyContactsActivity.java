@@ -168,8 +168,10 @@ public class EmergencyContactsActivity extends AppCompatActivity {
         }
 
         public void makeCall(String num){
-            if (ContextCompat.checkSelfPermission( EmergencyContactsActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
-              ActivityCompat.requestPermissions(EmergencyContactsActivity.this, new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            if (ContextCompat.checkSelfPermission( EmergencyContactsActivity.this, Manifest.permission.CALL_PHONE) !=
+                    PackageManager.PERMISSION_GRANTED){
+              ActivityCompat.requestPermissions(EmergencyContactsActivity.this,
+                      new String [] {Manifest.permission.CALL_PHONE}, REQUEST_CALL);
             }
             else {
                 if (num.length() == 10) {
@@ -314,9 +316,6 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                 phone6.setEnabled(true);
                 addButton.setVisibility(View.INVISIBLE);
             }
-
-
-
         }
     }
 
@@ -358,7 +357,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
 
     public String fixText(String num, int phoneNum){
             String fixed;
-            if(num.length()!=10)
+            if(num.length()!=10 && !num.equals("911"))
             {
                 if(phoneNum==1)
                     phoneB1.setVisibility(View.INVISIBLE);
@@ -370,6 +369,7 @@ public class EmergencyContactsActivity extends AppCompatActivity {
                     phoneB4.setVisibility(View.INVISIBLE);
                 fixed = "";
             }
+            else if(num.equals("911")) fixed = "911";
             else
                 fixed = "("+num.substring(0,3)+")"+" "+num.substring(3,6)+"-"+num.substring(6);
             return fixed;

@@ -39,272 +39,284 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/myRectangleView" />
 
-
-    <TextView
-        android:id="@+id/title"
+    <LinearLayout
+        android:id="@+id/contactsTitleLayout"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="90dp"
-        android:fontFamily="@font/archive"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:gravity="center"
-        android:text="Emergency Contacts"
-        android:textAllCaps="false"
-        android:textColor="#ff5757"
-        android:textSize="24sp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/myRectangleView">
 
-    <TextView
-        android:id="@+id/contactText1"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="220dp"
-        android:textColor="#ff5757"
-        android:fontFamily="@font/archive"
-        android:text="Fire Station"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="Emergency Contacts"
+            android:textAllCaps="false"
+            android:textColor="#ff5757"
+            android:textSize="18sp" />
 
-    <TextView
-        android:id="@+id/contactText2"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/archive"
-        android:layout_marginStart="10dp"
-        android:textColor="#ff5757"
-        android:layout_marginTop="20dp"
-        android:text="Police"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText1" />
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@color/yellow"
+            android:text="Edit" />
 
-    <TextView
-        android:id="@+id/contactText3"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/archive"
-        android:layout_marginStart="10dp"
-        android:textColor="#ff5757"
-        android:layout_marginTop="20dp"
-        android:text="Ambulance"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText2" />
-
-    <TextView
-        android:id="@+id/contactText4"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:textColor="#ff5757"
-        android:fontFamily="@font/archive"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText3" />
-    <TextView
-        android:id="@+id/contactText5"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:fontFamily="@font/archive"
-        android:layout_marginStart="10dp"
-        android:textColor="#ff5757"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText4" />
-    <TextView
-        android:id="@+id/contactText6"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:textColor="#ff5757"
-        android:fontFamily="@font/archive"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText5" />
-
-    <EditText
-        android:id="@+id/phone1"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="220dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/phone2"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText2"
-        app:layout_constraintTop_toBottomOf="@+id/phone1" />
-
-
-    <EditText
-        android:id="@+id/phone4"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText4"
-        app:layout_constraintTop_toBottomOf="@+id/phone3" />
-
-    <EditText
-        android:id="@+id/phone3"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText3"
-        app:layout_constraintTop_toBottomOf="@+id/phone2" />
-    <EditText
-        android:id="@+id/phone5"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText4"
-        app:layout_constraintTop_toBottomOf="@+id/phone4" />
-    <EditText
-        android:id="@+id/phone6"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:inputType="phone"
-        app:layout_constraintStart_toEndOf="@+id/contactText4"
-        app:layout_constraintTop_toBottomOf="@+id/phone5" />
-
-
-    <EditText
-        android:id="@+id/phoneT4"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText3" />
-    <EditText
-        android:id="@+id/phoneT5"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText4" />
-    <EditText
-        android:id="@+id/phoneT6"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contactText5" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/addButton"
-        android:layout_width="150dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginStart="10dp"
         android:background="@color/yellow"
         android:text="Add New Contact"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/contactsLayout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/contactsTitleLayout" />
 
-    <Button
-        android:id="@+id/editButton"
+    <RelativeLayout
+        android:id="@+id/contactsLayout"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="90dp"
-        android:background="@color/yellow"
-        android:text="Edit"
-        app:layout_constraintStart_toEndOf="@+id/title"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/contactsTitleLayout">
 
-    <Button
-        android:id="@+id/phoneB1"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="220dp"
-        android:background="@color/yellow"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/contactText1"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="Fire Station"
+            android:textColor="#ff5757" />
 
-    <Button
-        android:id="@+id/phoneB2"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:background="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toBottomOf="@+id/phone1" />
+        <TextView
+            android:id="@+id/contactText2"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText1"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="Police"
+            android:textColor="#ff5757" />
 
-    <Button
-        android:id="@+id/phoneB3"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:background="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toBottomOf="@+id/phoneB2" />
+        <TextView
+            android:id="@+id/contactText3"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText2"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="Ambulance"
+            android:textColor="#ff5757" />
 
-    <Button
-        android:id="@+id/phoneB4"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:background="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toBottomOf="@+id/phoneB3" />
-    <Button
-        android:id="@+id/phoneB5"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:background="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toBottomOf="@+id/phoneB4" />
+        <TextView
+            android:id="@+id/contactText4"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText3"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="contact1"
+            android:textColor="#ff5757" />
 
-    <Button
-        android:id="@+id/phoneB6"
-        android:layout_width="160dp"
-        android:layout_height="40dp"
-        android:background="@color/yellow"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:text="Button"
-        app:layout_constraintStart_toEndOf="@+id/contactText1"
-        app:layout_constraintTop_toBottomOf="@+id/phoneB5" />
+        <TextView
+            android:id="@+id/contactText5"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText4"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="contact2"
+            android:textColor="#ff5757" />
 
+        <TextView
+            android:id="@+id/contactText6"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText5"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/archive"
+            android:gravity="center"
+            android:text="contact3"
+            android:textColor="#ff5757" />
+
+        <EditText
+            android:id="@+id/phone1"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText1"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phone2"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phone1"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText2"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phone3"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phone2"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText3"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phone4"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phone3"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText4"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phone5"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phone4"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText5"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phone6"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phone5"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText6"
+            android:ems="10"
+            android:inputType="phone"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phoneT4"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/contactText3"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phoneT5"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phoneT4"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/phoneT6"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phoneT5"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/phoneB1"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText1"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/phoneB2"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phoneB1"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/contactText2"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/phoneB3"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/phoneB2"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/contactText3"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/phoneB4"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/phoneB3"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/contactText4"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/phoneB5"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/phoneB4"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/contactText5"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+        <Button
+            android:id="@+id/phoneB6"
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/phoneB5"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/contactText6"
+            android:background="@color/yellow"
+            android:text="Button" />
+
+    </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

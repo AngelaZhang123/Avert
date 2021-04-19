@@ -29,7 +29,7 @@ public class LocationsActivity extends AppCompatActivity {
         locations = getSharedPreferences("locations", Context.MODE_PRIVATE);
         editor = this.locations.edit();
         editButton = (Button) findViewById(R.id.editB);
-        spot1 = (EditText) findViewById(R.id.med1);
+        spot1 = (EditText) findViewById(R.id.spot1);
         spot2 = (EditText) findViewById(R.id.spot2);
         spot3 = (EditText) findViewById(R.id.spot3);
         spotT1 = (TextView)findViewById(R.id.spotT1);
